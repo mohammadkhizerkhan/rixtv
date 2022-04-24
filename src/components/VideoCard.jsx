@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function VideoCard({ video }) {
   const {_id,title,views,channelName,channelImg,channelLink,likes,uploaded} =video;
@@ -11,16 +12,16 @@ function VideoCard({ video }) {
       />
       <span class="video-time">09:30</span>
       <div class="video-card-details">
-          <a href={channelLink} target="_blank">
+          <Link to={channelLink} target="_blank">
         <img
           src={channelImg}
           alt=""
           class="img-responsive video-channel-avatar"
         />
-          </a>
+          </Link>
         <div class="video-card-desc">
           <h3 class="video-card-title">{title}</h3>
-          <a class="channel-name white-color font-bold" href={channelLink} target="_blank">{channelName}</a>
+          <Link class="channel-name white-color font-bold" to={channelLink} target="_blank">{channelName}</Link>
           <div class="video-views">{views} views &nbsp; {uploaded}</div>
         </div>
         <svg width="3rem" height="3rem" viewBox="0 0 24 24">
