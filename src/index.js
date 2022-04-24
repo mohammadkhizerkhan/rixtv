@@ -6,6 +6,7 @@ import App from "./App";
 import "../src/css/final.css"
 
 import { makeServer } from "./server";
+import { DataProvider } from "./context/DataContext";
 
 
 // Call make Server
@@ -14,7 +15,9 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <DataProvider>
     <App />
+    </DataProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

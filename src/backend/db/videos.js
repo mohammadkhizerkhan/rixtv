@@ -29,18 +29,6 @@ export const videos = [
     channelImg:"https://yt3.ggpht.com/UP3T9_N_LPLNc38Pja_OH9NEVhKCO8_kOyzhXTh_SH7Ro8uylcK7eA5mk8gX_TnVOmQk1K7AEw=s176-c-k-c0x00ffffff-no-rj"
     },
   {
-    _id:"YZCbH7ZnYc",
-    title:"Fortnite Chapter 3 Season 1 Character Trailer",
-    desc:"With the Chapter 3 Season 1 Battle Pass, unlock characters like Spider-Man and, preceding him: The “Lotus Walker” Shanta, unlocked immediately with the Battle Pass.unlock the leader of The Seven The Foundation.",
-    views:"780k",
-    likes:"10k",
-    uploaded:"7 Dec 2021",
-    category:"trailer",
-    channelName:"Epic Games",
-    channelLink:"https://www.youtube.com/channel/UC5Qk8mWBwtMyEj7iQQYRk1A",
-    channelImg:"https://yt3.ggpht.com/UP3T9_N_LPLNc38Pja_OH9NEVhKCO8_kOyzhXTh_SH7Ro8uylcK7eA5mk8gX_TnVOmQk1K7AEw=s176-c-k-c0x00ffffff-no-rj"
-    },
-  {
     _id:"KUDK8VoEFWg",
     title:"Rumbleverse Announcement Trailer",
     desc:"Welcome to Rumbleverse, from the talented Iron Galaxy!! Visit Grapital City, where you can brawl anywhere and be anyone! Enter a 40-person melee as you lay the smack down to be declared Champion in this Brawler-Royale.",
