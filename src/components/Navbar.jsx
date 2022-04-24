@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <nav class="flex-row-center navbar">
-      <a class="flex-row-center logo-div" href="./index.html">
+      <Link class="flex-row-center logo-div" to="/home">
         <div class="logo-img">
           <svg width="5rem" height="5rem" viewBox="0 0 24 24">
             <path
@@ -15,7 +16,7 @@ function Navbar() {
         <div class="logo-text">
           <span>RIXTV</span>
         </div>
-      </a>
+      </Link>
       <div class="flex-row-center search-div">
         <form action="" class="flex-row-center search-form">
           <input type="text" class="input input-search" />

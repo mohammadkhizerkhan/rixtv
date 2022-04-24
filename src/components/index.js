@@ -1,5 +1,6 @@
 import Navbar from './Navbar' 
 import Sidebar from './Sidebar' 
-import videoListing from './videoListing' 
+import VideoListing from './VideoListing' 
+import Categories from './Categories' 
 
-export {Navbar,Sidebar,videoListing}
+export {Navbar,Sidebar,VideoListing,Categories}

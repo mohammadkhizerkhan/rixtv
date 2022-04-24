@@ -1,6 +1,6 @@
 import React from 'react'
 
-function videoListing() {
+function VideoListing() {
     return (
         <section class="video-listing">
         <div class="video-card">
@@ -20,4 +20,4 @@ function videoListing() {
     )
 }
 
-export default videoListing
+export default VideoListing

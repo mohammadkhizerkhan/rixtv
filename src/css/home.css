@@ -102,6 +102,7 @@ body{
 }
 .link{
     color: var(--white-text-color);
+    width: 100%;
 }
 
 .list-item:hover{
@@ -120,6 +121,7 @@ body{
 }
 
 .main{
+    margin-top: 7rem;
     padding: 1rem;
     margin-left: 23rem;
     background-color: var(--background-color2);
@@ -144,6 +146,10 @@ body{
 .category:hover{
     background-color: var(--primary);
     color: var(--text-color);
+}
+
+.video-listing{
+    margin-top: 1rem;
 }
 
 .video-card{
