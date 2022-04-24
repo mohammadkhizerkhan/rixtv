@@ -8,8 +8,8 @@ function App() {
       <Navbar />
       <Sidebar />
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route element={<Home/>} >
+        <Route path="/" element={<Home/>} >
+          <Route index element={<><Categories/><VideoListing/></>}/>
           <Route path="/home" element={<><Categories/><VideoListing/></>}/>
           <Route path="/watchlater" element={<Watchlater/>}/>
           <Route path="/liked" element={<Liked/>}/>
