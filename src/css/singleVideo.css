@@ -1,0 +1,40 @@
+@import url(./home.css);
+
+.iframe-div{
+    display: flex;
+    justify-content: center;
+}
+
+.iframe-div iframe{
+    width: 100%;
+    height: calc(100vh - 20rem);
+}
+
+.single-video-btns{
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+}
+
+
+.single-video-btn{
+    background-color: var(--background-color1);
+    border-radius: 3px;
+    margin-right: 1rem;
+}
+
+.active-btn{
+    background-color: var(--primary);
+}
+
+.icon-btn-text{
+    margin-left: 5px;
+}
+.channel-div{
+    margin: 1rem 0;
+}
+
+.video-desc{
+    padding: 0 2rem;
+    font-size: 1.7rem;
+}
