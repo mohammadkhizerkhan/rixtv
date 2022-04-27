@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context";
+
 
 function Navbar() {
+  const {token}=useAuth();
   return (
     <nav class="flex-row-center navbar">
       <Link class="flex-row-center logo-div" to="/home">
@@ -40,6 +43,7 @@ function Navbar() {
           </button>
         </form>
       </div>
+      <Link to={token?"/user":"/signup"}>
       <div class="flex-row-center profile-logo-div">
         <svg width="4rem" height="4rem" viewBox="0 0 32 32">
           <path fill="#fbff00" d="M16 8a5 5 0 1 0 5 5a5 5 0 0 0-5-5Z"></path>
@@ -49,6 +53,7 @@ function Navbar() {
           ></path>
         </svg>
       </div>
+      </Link>
     </nav>
   );
 }
