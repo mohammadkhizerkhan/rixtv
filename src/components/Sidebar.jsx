@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom'
 function Sidebar() {
   const getActiveStyle = ({ isActive }) => {
     return {
-      color: isActive ? "#fbff00" : "#dadada",
-      borderLeft:isActive? "4px solid #fbff00":"",
+      color: isActive ? "#dade00" : "#dadada",
+      borderLeft:isActive? "4px solid #dade00":"",
     };
   };
     return (

@@ -37,7 +37,7 @@ function User() {
               type="submit"
               href=""
               onClick={(e) => logOutHandler(e)}
-              className="btn btn-m primary-btn"
+              className="btn btn-m primary-btn font-17 font-bold"
             >
               Log-out
             </button>

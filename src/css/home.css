@@ -11,7 +11,7 @@ html {
 }
 
 :root {
-  --primary: #fbff00;
+  --primary: #dade00;
   --text-color: #393e46;
   --white-text-color: #dadada;
   --background-color1: rgb(48, 48, 48);
@@ -31,8 +31,8 @@ body {
 .font-2 {
   font-size: 2rem;
 }
-.font-15 {
-  font-size: 1.5rem;
+.font-17 {
+  font-size: 1.7rem;
 }
 .margin-l-1 {
   margin-left: 1rem;
