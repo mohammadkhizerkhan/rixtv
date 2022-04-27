@@ -30,7 +30,6 @@ const AuthProvider=({children})=>{
             } catch (err) {
                 console.log("error in login",err)
                 setError(err);
-                
             }
         }
     }
