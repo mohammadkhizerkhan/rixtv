@@ -15,7 +15,6 @@ function User() {
     setUser();
     navigate("/home");
   };
-  console.log(user)
   return (
     <>
       <div class="form-container">
@@ -38,7 +37,7 @@ function User() {
               type="submit"
               href=""
               onClick={(e) => logOutHandler(e)}
-              class="btn-link formBtn"
+              className="btn btn-m primary-btn"
             >
               Log-out
             </button>

@@ -1,9 +1,10 @@
 import {useState} from 'react'
 import {useAuth} from "../context"
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,useLocation} from 'react-router-dom'
 
 function SignUp() {
   const { signup, token } = useAuth();
+  const location=useLocation();
   const navigate = useNavigate();
   const [form, setform] = useState({
     firstname: "",
@@ -22,6 +23,7 @@ function SignUp() {
     if (form.firstname && form.lastname && form.email && form.password) {
       signup(form);
     }
+    navigate(location?.state?.from?.pathname,{replace:true});
     setform({
       firstname: "",
       lastname: "",
@@ -30,18 +32,13 @@ function SignUp() {
     });
   };
 
-  if (token) {
-    setTimeout(() => {
-      navigate("/home");
-    }, 2000);
-  }
 
   return (
     <>
       <div class="form-container">
         <h1 class="text-center">SIGNUP</h1>
         <form class="form">
-          <label htmlFor="" class="input-label">
+          <label htmlFor="" class="input-label font-15">
             First name:
             <input
               type="text"
@@ -52,7 +49,7 @@ function SignUp() {
               onChange={handleChange}
             />
           </label>
-          <label htmlFor="" class="input-label">
+          <label htmlFor="" class="input-label font-15">
             last name:
             <input
               type="text"
@@ -63,7 +60,7 @@ function SignUp() {
               onChange={handleChange}
             />
           </label>
-          <label htmlFor="" class="input-label">
+          <label htmlFor="" class="input-label font-15">
             Email address:
             <input
               type="email"
@@ -74,7 +71,7 @@ function SignUp() {
               onChange={handleChange}
             />
           </label>
-          <label htmlFor="" class="input-label">
+          <label htmlFor="" class="input-label font-15">
             Password:
             <input
               type="password"
@@ -87,14 +84,14 @@ function SignUp() {
           </label>
           <label for="" class="input-label-row">
             <input type="checkbox" class="checkbox-input" />
-            <span class="inputs-title">I accept all Terms & Conditions</span>
+            <span class="inputs-title font-15">I accept all Terms & Conditions</span>
           </label>
           <label htmlFor="" class="input-label text-center formBtn">
             <button
               type="submit"
               href=""
               onClick={(e) => signUpHandler(e)}
-              class="btn-link formBtn"
+              className="btn btn-m primary-btn font-15"
             >
               SIGN UP
             </button>
@@ -104,7 +101,7 @@ function SignUp() {
               type="button"
               href=""
               onClick={() => navigate("/login")}
-              class="btn-link formBtn"
+              className="btn btn-m primary-btn font-15"
             >
               Already Have An Account
             </button>

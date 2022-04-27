@@ -1,10 +1,14 @@
 import { createContext, useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {loginService,signUpService} from '../services'
+
 
 
 const AuthContext=createContext();
 
 const AuthProvider=({children})=>{
+    const navigate=useNavigate();
+    const location=useLocation();
     const localToken=JSON.parse(localStorage.getItem("login")) 
     const localUser=JSON.parse(localStorage.getItem("user")) 
     const [token,setToken]=useState(localToken?.token)
@@ -21,6 +25,7 @@ const AuthProvider=({children})=>{
                     localStorage.setItem("user",JSON.stringify({user:foundUser}))
                     setToken(encodedToken)
                     setUser(foundUser)
+                    navigate(location?.state?.from||"/home",{replace:true});
                 }
             } catch (err) {
                 console.log("error in login",err)
