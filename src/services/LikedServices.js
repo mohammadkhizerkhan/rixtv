@@ -39,23 +39,6 @@ const removeFromLike = async (token, video,likeDispatch) => {
 
 };
 
-const getLike = async (token,likeDispatch) => {
-    try {
-      const {data} = await axios.get(
-        "/api/user/likes",
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      likeDispatch({type:ACTION_TYPE.GET_LIKE,payload:data})
-      return data
-    } catch (error) {
-        console.log("error in get to LIKE",error)
-    }
-  };
-
 
 // const clearCart=(token,carts,cartDispatch)=>{
 //   carts.forEach(async(item)=>{
@@ -78,4 +61,4 @@ const getLike = async (token,likeDispatch) => {
 
 
 
-export { addToLike,removeFromLike,getLike };
+export { addToLike,removeFromLike };

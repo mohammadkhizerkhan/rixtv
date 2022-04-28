@@ -1,27 +1,37 @@
 import {useEffect} from 'react'
+import axios from "axios";
+import { useState } from 'react';
 import VideoCard from '../components/VideoCard';
-import { useAuth, useLike } from '../context'
-import { getLike } from '../services/LikedServices';
+import { useAuth} from '../context'
 
 function Liked() {
-    const {likeState,likeDispatch}=useLike();
+    const [liked,setLiked]=useState([])
     const {token}=useAuth();
     
     useEffect(() => {
         (async ()=>{
             try {
-                const data=await getLike(token,likeDispatch)
-            } catch (error) {
-                console.log("error in getting like",error)
-            }
-        })
+                const {data} = await axios.get(
+                  "/api/user/likes",
+                  {
+                    headers: {
+                      authorization: token,
+                    },
+                  }
+                );
+                console.log(data)
+                setLiked(prev=>[...prev,...data.likes])
+              } catch (error) {
+                  console.log("error in get to LIKE",error)
+              }
+        })();
     }, [])
 
     return (
         <>
         <h1>this is Like page</h1>
         {
-            likeState.liked.map((video)=>{
+            liked.map((video)=>{
                 return (
                     <VideoCard key={video._id} video={video}/>
                 )
