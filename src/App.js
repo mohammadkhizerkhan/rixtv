@@ -27,7 +27,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route element={<Home />}>
-            {/* <Route index element={<><Categories/><VideoListing/></>}/> */}
+            <Route path="/" element={<><Categories/><VideoListing/></>}/>
             <Route
               index
               path="/home"
