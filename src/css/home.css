@@ -11,9 +11,9 @@ html {
 }
 
 :root {
-  --primary: #fbff00;
+  --primary: #dade00;
   --text-color: #393e46;
-  --white-text-color: rgb(218, 218, 218);
+  --white-text-color: #dadada;
   --background-color1: rgb(48, 48, 48);
   --background-color2: rgb(30, 32, 36);
   --border-color: #3e3e41;
@@ -30,6 +30,9 @@ body {
 
 .font-2 {
   font-size: 2rem;
+}
+.font-17 {
+  font-size: 1.7rem;
 }
 .margin-l-1 {
   margin-left: 1rem;
@@ -115,7 +118,6 @@ body {
 }
 
 .list-item:hover {
-  /* border-left: 5px solid var(--primary); */
   background-color: var(--background-color2);
 }
 
@@ -124,16 +126,13 @@ body {
   border-right: 1px solid var(--border-color);
   position: sticky;
   overflow-y: auto;
-  /* top: 7rem; */
   left: 0;
   height: calc(100% - 7.1rem);
 }
 
 .main {
     flex-grow: 1;
-  /* margin-top: 7rem; */
   padding: 1rem;
-  /* margin-left: 23rem; */
   background-color: var(--background-color2);
 }
 
@@ -218,4 +217,10 @@ body {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.form-container{
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
 }
