@@ -8,7 +8,13 @@ function Liked() {
     const {token}=useAuth();
     
     useEffect(() => {
-        getLike(token,likeDispatch)
+        (async ()=>{
+            try {
+                const data=await getLike(token,likeDispatch)
+            } catch (error) {
+                console.log("error in getting like",error)
+            }
+        })
     }, [])
 
     return (

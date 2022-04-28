@@ -8,7 +8,6 @@ import { addToLike,removeFromLike } from "../services/LikedServices";
 function SingleVideo() {
   const { videoId } = useParams();
   const { likeState, likeDispatch } = useLike();
-  console.log(likeState.liked)
   const { token } = useAuth();
   const navigate = useNavigate();
   const [video, setVideo] = useState({});

@@ -50,6 +50,7 @@ const getLike = async (token,likeDispatch) => {
         }
       );
       likeDispatch({type:ACTION_TYPE.GET_LIKE,payload:data})
+      return data
     } catch (error) {
         console.log("error in get to LIKE",error)
     }
