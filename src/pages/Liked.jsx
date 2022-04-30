@@ -5,43 +5,44 @@ import VideoCard from '../components/VideoCard';
 import { useAuth, useLike} from '../context'
 
 function Liked() {
-    const [liked,setLiked]=useState([])
     const {token}=useAuth();
-    const {likeState}=useLike();
+    const {like,setLike}=useLike();
 
     
     // for future reference 
-    // useEffect(() => {
-    //     (async ()=>{
-    //         try {
-    //             const {data} = await axios.get(
-    //               "/api/user/likes",
-    //               {
-    //                 headers: {
-    //                   authorization: token,
-    //                 },
-    //               }
-    //             );
-    //             console.log(data)
-    //             setLiked(prev=>[...prev,...data.likes])
-    //           } catch (error) {
-    //               console.log("error in get to LIKE",error)
-    //           }
-    //     })();
-    // }, [])
+    useEffect(() => {
+        (async ()=>{
+            try {
+                const {data} = await axios.get(
+                  "/api/user/likes",
+                  {
+                    headers: {
+                      authorization: token,
+                    },
+                  }
+                );
+                console.log([...data.likes])
+                setLike([...data.likes])
+              } catch (error) {
+                  console.log("error in get to LIKE",error)
+              }
+        })();
+    }, [])
 
     return (
         <>
         {
-           ( likeState.liked.length) ?<></>:<h1>You have not liked any videos!!</h1>
+           ( like.length) ?<></>:<h1>You have not liked any videos!!</h1>
         }
+        <section class="video-listing flex-row-wrap">
         {
-            likeState.liked.map((video)=>{
+            like.map((video)=>{
                 return (
                     <VideoCard key={video._id} video={video}/>
                 )
             })
         }
+        </section>
         </>
     )
 }

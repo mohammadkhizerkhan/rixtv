@@ -35,6 +35,7 @@ function WatchLater() {
         {
            ( watchLaterState.watchLater.length) ?<></>:<h1>You have not added any videos to watchLater!!</h1>
         }
+        <section class="video-listing flex-row-wrap">
         {
             watchLaterState.watchLater.map((video)=>{
                 return (
@@ -42,6 +43,7 @@ function WatchLater() {
                 )
             })
         }
+        </section>
         </>
     )
 }

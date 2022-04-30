@@ -14,7 +14,7 @@ function VideoCard({ video }) {
   const location = useLocation();
   const { token } = useAuth();
   const { history,setHistory } = useHistory();
-  const { likeState, likeDispatch } = useLike();
+  const { like, setLike } = useLike();
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
   const navigate = useNavigate();
   const {
@@ -27,13 +27,14 @@ function VideoCard({ video }) {
     likes,
     uploaded,
   } = video;
+  // console.log(like.some((item) => item._id === video._id))
   return (
     <>
       <div class="video-card" onMouseLeave={() => setMoreBtn(false)}>
         <Link to={`/video/${_id}`}>
           <div
             className="thumbnail-div"
-            onClick={() =>history.every((item) => item._id !== video._id) && addToHistory(token, video)
+            onClick={() =>history.every((item) => item._id !== video._id) && addToHistory(token, video,setHistory)
             }
           >
             <img
@@ -64,7 +65,7 @@ function VideoCard({ video }) {
           <div className="dropdown-label-div">
             <button
               className="btn btn-icon btn-4"
-              onClick={() => setMoreBtn(!moreBtn)}
+              onClick={() =>setMoreBtn(!moreBtn)}
             >
               <svg width="3rem" height="3rem" viewBox="0 0 24 24">
                 <path
@@ -75,10 +76,10 @@ function VideoCard({ video }) {
             </button>
             {moreBtn && (
               <div className="dropdown-label-btns">
-                {likeState.liked.some((like) => like._id === video._id) ? (
+                {like?.some((item) => item._id === video._id) ? (
                   <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
-                    onClick={() => removeFromLike(token, video, likeDispatch)}
+                    onClick={() => removeFromLike(token, video, setLike)}
                   >
                     Dislike
                   </button>
@@ -87,7 +88,7 @@ function VideoCard({ video }) {
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
                     onClick={() =>
                       token
-                        ? addToLike(token, video, likeDispatch)
+                        ? addToLike(token, video, setLike)
                         : navigate("/login", {
                             replace: true,
                             state: { from: location.pathname },
@@ -96,7 +97,7 @@ function VideoCard({ video }) {
                   >
                     Like
                   </button>
-                )}
+                )} 
                 {watchLaterState.watchLater.some(
                   (watchLater) => watchLater._id === video._id
                 ) ? (
@@ -122,7 +123,7 @@ function VideoCard({ video }) {
                   >
                     Add to watchLater
                   </button>
-                )}
+                )} 
                 {
                   history.some(item=>item._id===video._id)&&(
                     <button

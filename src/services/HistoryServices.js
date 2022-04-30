@@ -1,7 +1,6 @@
 import axios from "axios";
-import { ACTION_TYPE } from "../Action";
 
-const addToHistory =async (token, video) => {
+const addToHistory =async (token, video,setHistory) => {
     try {
         const {data}=await axios.post(
             "/api/user/history",
@@ -14,8 +13,7 @@ const addToHistory =async (token, video) => {
               },
             }
           );
-        //   console.log(data)
-        //   historyDispatch({type:ACTION_TYPE.ADD_TO_HISTORY,payload:video})
+       setHistory(data.history)
     } catch (error) {
         console.log("error in add to history",error)
     }

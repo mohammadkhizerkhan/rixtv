@@ -7,7 +7,7 @@ import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater, addToHi
 
 function SingleVideo() {
   const { videoId } = useParams();
-  const { likeState, likeDispatch } = useLike();
+  const { like, setLike } = useLike();
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
   const {historyDispatch}=useHistory();
   const { token } = useAuth();
@@ -58,10 +58,11 @@ function SingleVideo() {
           </div>
         </div>
         <div class="single-video-btns flex-row-center">
-          {likeState.liked.some((like) => like._id === video._id) ? (
+          {console.log(like)}
+          {like.some((like) => like._id === video._id) ? (
             <button
               class="btn btn-s flex-row-center single-video-btn"
-              onClick={() => removeFromLike(token, video, likeDispatch)}
+              onClick={() => removeFromLike(token, video, setLike)}
             >
               <svg width="2rem" height="2rem" viewBox="0 0 1024 1024">
                 <path
@@ -74,7 +75,7 @@ function SingleVideo() {
           ) : (
             <button
               class="btn btn-s flex-row-center single-video-btn"
-              onClick={() => (token?addToLike(token, video, likeDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
+              onClick={() => (token?addToLike(token, video, setLike):navigate("/login",{replace:true,state:{from:location.pathname}}))}
             >
               <svg width="2rem" height="2rem" viewBox="0 0 1024 1024">
                 <path
