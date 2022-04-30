@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate,Navigate } from "react-router-dom";
 import { useAuth, useLike,useWatchLater } from "../context";
 import { addToLike, removeFromLike } from "../services/LikedServices";
 import { addToWatchLater,removeFromWatchLater } from "../services/WatchLaterServices"
 function VideoCard({ video }) {
   const [moreBtn, setMoreBtn] = useState(false);
+  const location=useLocation();
   const { token } = useAuth();
   const { likeState, likeDispatch } = useLike();
   const {watchLaterState,watchLaterDispatch}=useWatchLater();
@@ -74,7 +75,7 @@ function VideoCard({ video }) {
                 ) : (
                   <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
-                    onClick={() => addToLike(token, video, likeDispatch)}
+                    onClick={() => (token?addToLike(token, video, likeDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
                   >
                     Like
                   </button>
@@ -89,7 +90,7 @@ function VideoCard({ video }) {
                 ) : (
                   <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
-                    onClick={() => addToWatchLater(token, video, watchLaterDispatch)}
+                    onClick={() => (token?addToWatchLater(token, video, watchLaterDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
                   >
                    Add to watchLater
                   </button>

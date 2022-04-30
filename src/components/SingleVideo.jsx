@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate,useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth, useLike, useWatchLater } from "../context";
@@ -15,6 +15,7 @@ function SingleVideo() {
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
   const { token } = useAuth();
   const navigate = useNavigate();
+  const location=useLocation();
   const [video, setVideo] = useState({});
   const {
     _id,
@@ -75,7 +76,7 @@ function SingleVideo() {
           ) : (
             <button
               class="btn btn-s flex-row-center single-video-btn"
-              onClick={() => addToLike(token, video, likeDispatch)}
+              onClick={() => (token?addToLike(token, video, likeDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
             >
               <svg width="2rem" height="2rem" viewBox="0 0 1024 1024">
                 <path
@@ -106,7 +107,7 @@ function SingleVideo() {
           ) : (
             <button
               class="btn btn-s flex-row-center single-video-btn inactive-btn"
-              onClick={() => addToWatchLater(token, video, watchLaterDispatch)}
+              onClick={() => (token?addToWatchLater(token, video, watchLaterDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
             >
               <svg width="2rem" height="2rem" viewBox="0 0 24 24">
                 <path
