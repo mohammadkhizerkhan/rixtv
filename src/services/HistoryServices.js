@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ACTION_TYPE } from "../Action";
 
-const addToHistory =async (token, video, historyDispatch) => {
+const addToHistory =async (token, video) => {
     try {
         const {data}=await axios.post(
             "/api/user/history",
@@ -15,13 +15,13 @@ const addToHistory =async (token, video, historyDispatch) => {
             }
           );
         //   console.log(data)
-          historyDispatch({type:ACTION_TYPE.ADD_TO_HISTORY,payload:video})
+        //   historyDispatch({type:ACTION_TYPE.ADD_TO_HISTORY,payload:video})
     } catch (error) {
         console.log("error in add to history",error)
     }
 };
 
-const removeFromHistory = async (token, video,historyDispatch) => {
+const removeFromHistory = async (token, video,setHistory) => {
     try {
       const {data} = await axios.delete(
           `/api/user/history/${video._id}`,
@@ -31,14 +31,13 @@ const removeFromHistory = async (token, video,historyDispatch) => {
           },
         }
       );
-    //   console.log(data)
-      historyDispatch({type:ACTION_TYPE.REMOVE_FROM_HISTORY,payload:video});
+    setHistory(data.history)
     } catch (error) {
         console.log("error in remove from history",error)
     }
   };
 
-const deleteAllHistory=async(token,historyDispatch)=>{
+const deleteAllHistory=async(token,setHistory)=>{
     try {
         const {data}=await axios.delete(
             "/api/user/history/all",
@@ -48,8 +47,7 @@ const deleteAllHistory=async(token,historyDispatch)=>{
               },
             }
           );
-        //   console.log(data)
-          historyDispatch({type:ACTION_TYPE.DELETE_ALL_HISTORY})
+          setHistory(data.history)
     } catch (error) {
         console.log("error in delete all history",error)
     }

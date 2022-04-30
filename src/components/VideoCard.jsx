@@ -13,7 +13,7 @@ function VideoCard({ video }) {
   const [moreBtn, setMoreBtn] = useState(false);
   const location = useLocation();
   const { token } = useAuth();
-  const { historyState, historyDispatch } = useHistory();
+  const { history,setHistory } = useHistory();
   const { likeState, likeDispatch } = useLike();
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ function VideoCard({ video }) {
         <Link to={`/video/${_id}`}>
           <div
             className="thumbnail-div"
-            onClick={() =>historyState.history.every((item) => item._id !== video._id) && addToHistory(token, video, historyDispatch)
+            onClick={() =>history.every((item) => item._id !== video._id) && addToHistory(token, video)
             }
           >
             <img
@@ -124,11 +124,11 @@ function VideoCard({ video }) {
                   </button>
                 )}
                 {
-                  historyState.history.some(item=>item._id===video._id)&&(
+                  history.some(item=>item._id===video._id)&&(
                     <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
                     onClick={() =>
-                      removeFromHistory(token, video, historyDispatch)
+                      removeFromHistory(token, video,setHistory)
                     }
                   >
                     Remove from History
