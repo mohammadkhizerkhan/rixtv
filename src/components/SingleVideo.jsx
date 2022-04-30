@@ -2,13 +2,14 @@ import React from "react";
 import { Link, useParams, useNavigate,useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useAuth, useLike, useWatchLater } from "../context";
-import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater } from "../services";
+import { useAuth, useHistory, useLike, useWatchLater } from "../context";
+import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater, addToHistory } from "../services";
 
 function SingleVideo() {
   const { videoId } = useParams();
   const { likeState, likeDispatch } = useLike();
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
+  const {historyDispatch}=useHistory();
   const { token } = useAuth();
   const navigate = useNavigate();
   const location=useLocation();
@@ -35,6 +36,7 @@ function SingleVideo() {
       }
     })();
   }, [videoId]);
+  
 
   return (
     <>
