@@ -25,5 +25,30 @@ const LikedReducer = (state, action) => {
         return state;
     }
   };
+const WatchLaterReducer = (state, action) => {
+    switch (action.type) {
+      case ACTION_TYPE.ADD_TO_WATCHLATER:
+        return { ...state, watchLater: [...state.watchLater, { ...action.payload}] };
 
-export {LikedReducer}
+      case ACTION_TYPE.REMOVE_FROM_WATCHLATER:
+        return {
+          ...state,
+          watchLater: state.watchLater.filter((watchlater) => watchlater._id !== action.payload._id),
+        };
+      case ACTION_TYPE.GET_WATCHLATER:
+        return {
+          ...state,
+          watchLater:[...state.watchLater]
+        };
+    //   case ACTION_TYPE.CLEAR_CART:
+    //     console.log(action.payload)
+    //     return {
+    //       ...state,
+    //       cart: action.payload,
+    //     };
+      default:
+        return state;
+    }
+  };
+
+export {LikedReducer,WatchLaterReducer}

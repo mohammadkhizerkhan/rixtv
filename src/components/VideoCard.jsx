@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth, useLike } from "../context";
+import { useAuth, useLike,useWatchLater } from "../context";
 import { addToLike, removeFromLike } from "../services/LikedServices";
-
+import { addToWatchLater,removeFromWatchLater } from "../services/WatchLaterServices"
 function VideoCard({ video }) {
   const [moreBtn, setMoreBtn] = useState(false);
   const { token } = useAuth();
   const { likeState, likeDispatch } = useLike();
+  const {watchLaterState,watchLaterDispatch}=useWatchLater();
   const navigate = useNavigate();
   const {
     _id,
@@ -78,9 +79,21 @@ function VideoCard({ video }) {
                     Like
                   </button>
                 )}
-                <button className="btn btn-m dropdown-btn text-left font-bold font-15">
-                  wathlater
-                </button>
+                {watchLaterState.watchLater.some((watchLater) => watchLater._id === video._id) ? (
+                  <button
+                    className="btn btn-m dropdown-btn text-left font-bold font-15"
+                    onClick={() => removeFromWatchLater(token, video, watchLaterDispatch)}
+                  >
+                    Remove from watchLater
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-m dropdown-btn text-left font-bold font-15"
+                    onClick={() => addToWatchLater(token, video, watchLaterDispatch)}
+                  >
+                   Add to watchLater
+                  </button>
+                )}
               </div>
             )}
           </div>

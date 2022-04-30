@@ -25,7 +25,7 @@ const removeFromLike = async (token, video,likeDispatch) => {
 
   try {
     const res = await axios.delete(
-        `/api/user/likes/:${video._id}`,
+        `/api/user/likes/${video._id}`,
       {
         headers: {
           authorization: token,
