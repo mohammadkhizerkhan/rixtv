@@ -8,7 +8,9 @@ function Liked() {
     const [liked,setLiked]=useState([])
     const {token}=useAuth();
     const {likeState}=useLike();
+
     
+    // for future reference 
     // useEffect(() => {
     //     (async ()=>{
     //         try {
@@ -30,7 +32,9 @@ function Liked() {
 
     return (
         <>
-        <h1>this is Like page</h1>
+        {
+           ( likeState.liked.length) ?<></>:<h1>You have not liked any videos!!</h1>
+        }
         {
             likeState.liked.map((video)=>{
                 return (
