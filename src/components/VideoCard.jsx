@@ -15,7 +15,7 @@ function VideoCard({ video }) {
   const { token } = useAuth();
   const { history,setHistory } = useHistory();
   const { like, setLike } = useLike();
-  const { watchLaterState, watchLaterDispatch } = useWatchLater();
+  const { watchLater, setWatchLater } = useWatchLater();
   const navigate = useNavigate();
   const {
     _id,
@@ -98,13 +98,13 @@ function VideoCard({ video }) {
                     Like
                   </button>
                 )} 
-                {watchLaterState.watchLater.some(
+                {watchLater.some(
                   (watchLater) => watchLater._id === video._id
                 ) ? (
                   <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
                     onClick={() =>
-                      removeFromWatchLater(token, video, watchLaterDispatch)
+                      removeFromWatchLater(token, video, setWatchLater)
                     }
                   >
                     Remove from watchLater
@@ -114,7 +114,7 @@ function VideoCard({ video }) {
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
                     onClick={() =>
                       token
-                        ? addToWatchLater(token, video, watchLaterDispatch)
+                        ? addToWatchLater(token, video, setWatchLater)
                         : navigate("/login", {
                             replace: true,
                             state: { from: location.pathname },

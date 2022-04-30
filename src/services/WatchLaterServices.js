@@ -1,10 +1,8 @@
 import axios from "axios";
-import { ACTION_TYPE } from "../Action";
 
-
-const addToWatchLater = async (token, video,watchLaterDispatch) => {
+const addToWatchLater = async (token, video,setWatchLater) => {
   try {
-    const res = await axios.post(
+    const {data} = await axios.post(
       "/api/user/watchlater",
       {
         video,
@@ -15,15 +13,15 @@ const addToWatchLater = async (token, video,watchLaterDispatch) => {
         },
       }
     );
-    watchLaterDispatch({type:ACTION_TYPE.ADD_TO_WATCHLATER,payload:video});
+    setWatchLater(data.watchlater)
   } catch (error) {
       console.log("error in add to watchlater",error)
   }
 };
 
-const removeFromWatchLater = async (token, video,watchLaterDispatch) => {
+const removeFromWatchLater = async (token, video,setWatchLater) => {
   try {
-    const res = await axios.delete(
+    const {data} = await axios.delete(
         `/api/user/watchlater/${video._id}`,
       {
         headers: {
@@ -31,7 +29,7 @@ const removeFromWatchLater = async (token, video,watchLaterDispatch) => {
         },
       }
     );
-    watchLaterDispatch({type:ACTION_TYPE.REMOVE_FROM_WATCHLATER,payload:video});
+    setWatchLater(data.watchlater)
   } catch (error) {
       console.log("error in remove from watchlater",error)
   }

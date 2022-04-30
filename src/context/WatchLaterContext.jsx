@@ -1,16 +1,14 @@
-import { createContext, useContext,useReducer} from "react";
-import { WatchLaterReducer } from "../reducer";
+import { createContext, useContext} from "react";
+import { useState } from "react";
 
 const WatchLaterContext=createContext();
 
 
 const WatchLaterProvider=({children})=>{
-    const [watchLaterState, watchLaterDispatch] = useReducer(WatchLaterReducer,{
-        watchLater:[]
-    })
+    const [watchLater,setWatchLater] = useState([])
 
     return (
-        <WatchLaterContext.Provider value={{watchLaterState,watchLaterDispatch}}>
+        <WatchLaterContext.Provider value={{watchLater,setWatchLater}}>
             {children}
         </WatchLaterContext.Provider>
     )
