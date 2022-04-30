@@ -3,11 +3,7 @@ import { Link, useParams, useNavigate,useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth, useLike, useWatchLater } from "../context";
-import { addToLike, removeFromLike } from "../services/LikedServices";
-import {
-  addToWatchLater,
-  removeFromWatchLater,
-} from "../services/WatchLaterServices";
+import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater } from "../services";
 
 function SingleVideo() {
   const { videoId } = useParams();

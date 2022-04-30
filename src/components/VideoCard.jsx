@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate,Navigate } from "react-router-dom";
 import { useAuth, useLike,useWatchLater } from "../context";
-import { addToLike, removeFromLike } from "../services/LikedServices";
-import { addToWatchLater,removeFromWatchLater } from "../services/WatchLaterServices"
+import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater } from "../services";
 function VideoCard({ video }) {
   const [moreBtn, setMoreBtn] = useState(false);
   const location=useLocation();
