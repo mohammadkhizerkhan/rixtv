@@ -6,8 +6,12 @@ import App from "./App";
 import "../src/css/final.css";
 
 import { makeServer } from "./server";
-import { DataProvider } from "./context/DataContext";
-import { AuthProvider } from "./context/AuthContext";
+import {
+  DataProvider,
+  AuthProvider,
+  LikeProvider,
+  WatchLaterProvider,
+} from "./context";
 
 // Call make Server
 makeServer();
@@ -17,7 +21,11 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <DataProvider>
-          <App />
+          <WatchLaterProvider>
+            <LikeProvider>
+              <App />
+            </LikeProvider>
+          </WatchLaterProvider>
         </DataProvider>
       </AuthProvider>
     </BrowserRouter>

@@ -11,11 +11,12 @@ html {
 }
 
 :root {
-  --primary: #dade00;
+  --primary: #FFD300;
   --text-color: #393e46;
   --white-text-color: #dadada;
   --background-color1: rgb(48, 48, 48);
   --background-color2: rgb(30, 32, 36);
+  --background-color3: rgb(62, 63, 65);
   --border-color: #3e3e41;
 }
 
@@ -28,8 +29,17 @@ body {
   color: var(--white-text-color);
 }
 
+
+.btn-4{
+  width: 4rem;
+  height: 4rem;
+}
+
 .font-2 {
   font-size: 2rem;
+}
+.font-15 {
+  font-size: 1.5rem;
 }
 .font-17 {
   font-size: 1.7rem;
@@ -201,7 +211,7 @@ body {
 }
 
 .video-card-desc {
-    width: 100%;
+  width: calc(100% - 9rem);
   font-size: 1.5rem;
 }
 
@@ -213,7 +223,7 @@ body {
 }
 
 .video-card-title {
-  width: calc(100% - 6rem);
+  width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -223,4 +233,34 @@ body {
   width: 100%;
   max-width: 40rem;
   margin: 0 auto;
+}
+
+.dropdown-label-div {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-label-btns{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  position: absolute;
+  background-color: var(--background-color1);
+  padding: 8px 4px 8px 8px;
+  border-radius: 4px;
+  top: 3rem;
+  left: 1rem;
+  gap: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.dropdown-btn{
+  color: var(--white-text-color);
+  width: 100%;
+}
+
+.dropdown-btn:hover{
+  background-color: var(--background-color3);
 }
