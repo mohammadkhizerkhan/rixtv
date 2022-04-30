@@ -15,12 +15,6 @@ const LikedReducer = (state, action) => {
           ...state,
           liked:[...state.liked]
         };
-    //   case ACTION_TYPE.CLEAR_CART:
-    //     console.log(action.payload)
-    //     return {
-    //       ...state,
-    //       cart: action.payload,
-    //     };
       default:
         return state;
     }
@@ -40,12 +34,7 @@ const WatchLaterReducer = (state, action) => {
           ...state,
           watchLater:[...state.watchLater]
         };
-    //   case ACTION_TYPE.CLEAR_CART:
-    //     console.log(action.payload)
-    //     return {
-    //       ...state,
-    //       cart: action.payload,
-    //     };
+  
       default:
         return state;
     }

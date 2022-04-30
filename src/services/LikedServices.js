@@ -40,24 +40,6 @@ const removeFromLike = async (token, video,likeDispatch) => {
 };
 
 
-// const clearCart=(token,carts,cartDispatch)=>{
-//   carts.forEach(async(item)=>{
-//     try {
-//       const res = await axios.delete(
-//           `/api/user/cart/:${item._id}`,
-//         {
-//           headers: {
-//             authorization: token,
-//           },
-//         }
-//       );
-//       console.log(res)
-//       res.status===200 && cartDispatch({type:ACTION_TYPE.CLEAR_CART,payload:[]});
-//     } catch (error) {
-//         console.log("error in remove from cart",error)
-//     }
-//   })
-// }
 
 
 
