@@ -29,6 +29,10 @@ body {
   color: var(--white-text-color);
 }
 
+.btn {
+  border-radius: 0;
+  margin: 0;
+}
 
 .btn-4{
   width: 4rem;
@@ -47,14 +51,15 @@ body {
 .margin-l-1 {
   margin-left: 1rem;
 }
+.margin-b-1 {
+  margin-bottom: 1rem;
+}
 .margin-l-2 {
   margin-left: 2rem;
 }
 
-.btn {
-  border-radius: 0;
-  margin: 0;
-}
+
+
 .primary-btn:hover {
   background-color: var(--primary);
 }

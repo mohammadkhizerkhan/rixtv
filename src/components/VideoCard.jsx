@@ -1,13 +1,21 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate,Navigate } from "react-router-dom";
-import { useAuth, useLike,useWatchLater } from "../context";
-import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater } from "../services";
+import { Link, useLocation, useNavigate, Navigate } from "react-router-dom";
+import { useAuth, useHistory, useLike, useWatchLater } from "../context";
+import {
+  addToLike,
+  removeFromLike,
+  addToWatchLater,
+  removeFromWatchLater,
+  addToHistory,
+  removeFromHistory
+} from "../services";
 function VideoCard({ video }) {
   const [moreBtn, setMoreBtn] = useState(false);
-  const location=useLocation();
+  const location = useLocation();
   const { token } = useAuth();
-  const { likeState, likeDispatch } = useLike();
-  const {watchLaterState,watchLaterDispatch}=useWatchLater();
+  const { history,setHistory } = useHistory();
+  const { like, setLike } = useLike();
+  const { watchLater, setWatchLater } = useWatchLater();
   const navigate = useNavigate();
   const {
     _id,
@@ -19,17 +27,21 @@ function VideoCard({ video }) {
     likes,
     uploaded,
   } = video;
+  // console.log(like.some((item) => item._id === video._id))
   return (
     <>
       <div class="video-card" onMouseLeave={() => setMoreBtn(false)}>
         <Link to={`/video/${_id}`}>
-          <div className="thumbnail-div">
+          <div
+            className="thumbnail-div"
+            onClick={() =>history.every((item) => item._id !== video._id) && addToHistory(token, video,setHistory)
+            }
+          >
             <img
               src={`https://i.ytimg.com/vi/${_id}/0.jpg`}
               class="img-responsive video-img"
               alt=""
             />
-
             <span class="video-time">09:30</span>
           </div>
         </Link>
@@ -53,7 +65,7 @@ function VideoCard({ video }) {
           <div className="dropdown-label-div">
             <button
               className="btn btn-icon btn-4"
-              onClick={() => setMoreBtn(!moreBtn)}
+              onClick={() =>setMoreBtn(!moreBtn)}
             >
               <svg width="3rem" height="3rem" viewBox="0 0 24 24">
                 <path
@@ -64,36 +76,66 @@ function VideoCard({ video }) {
             </button>
             {moreBtn && (
               <div className="dropdown-label-btns">
-                {likeState.liked.some((like) => like._id === video._id) ? (
+                {like?.some((item) => item._id === video._id) ? (
                   <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
-                    onClick={() => removeFromLike(token, video, likeDispatch)}
+                    onClick={() => removeFromLike(token, video, setLike)}
                   >
                     Dislike
                   </button>
                 ) : (
                   <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
-                    onClick={() => (token?addToLike(token, video, likeDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
+                    onClick={() =>
+                      token
+                        ? addToLike(token, video, setLike)
+                        : navigate("/login", {
+                            replace: true,
+                            state: { from: location.pathname },
+                          })
+                    }
                   >
                     Like
                   </button>
-                )}
-                {watchLaterState.watchLater.some((watchLater) => watchLater._id === video._id) ? (
+                )} 
+                {watchLater.some(
+                  (watchLater) => watchLater._id === video._id
+                ) ? (
                   <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
-                    onClick={() => removeFromWatchLater(token, video, watchLaterDispatch)}
+                    onClick={() =>
+                      removeFromWatchLater(token, video, setWatchLater)
+                    }
                   >
                     Remove from watchLater
                   </button>
                 ) : (
                   <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
-                    onClick={() => (token?addToWatchLater(token, video, watchLaterDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
+                    onClick={() =>
+                      token
+                        ? addToWatchLater(token, video, setWatchLater)
+                        : navigate("/login", {
+                            replace: true,
+                            state: { from: location.pathname },
+                          })
+                    }
                   >
-                   Add to watchLater
+                    Add to watchLater
                   </button>
-                )}
+                )} 
+                {
+                  history.some(item=>item._id===video._id)&&(
+                    <button
+                    className="btn btn-m dropdown-btn text-left font-bold font-15"
+                    onClick={() =>
+                      removeFromHistory(token, video,setHistory)
+                    }
+                  >
+                    Remove from History
+                  </button>
+                  )
+                }
               </div>
             )}
           </div>

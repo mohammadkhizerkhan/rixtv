@@ -2,13 +2,14 @@ import React from "react";
 import { Link, useParams, useNavigate,useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useAuth, useLike, useWatchLater } from "../context";
-import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater } from "../services";
+import { useAuth, useHistory, useLike, useWatchLater } from "../context";
+import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater, addToHistory } from "../services";
 
 function SingleVideo() {
   const { videoId } = useParams();
-  const { likeState, likeDispatch } = useLike();
-  const { watchLaterState, watchLaterDispatch } = useWatchLater();
+  const { like, setLike } = useLike();
+  const { watchLater, setWatchLater } = useWatchLater();
+  const {historyDispatch}=useHistory();
   const { token } = useAuth();
   const navigate = useNavigate();
   const location=useLocation();
@@ -35,6 +36,7 @@ function SingleVideo() {
       }
     })();
   }, [videoId]);
+  
 
   return (
     <>
@@ -56,10 +58,11 @@ function SingleVideo() {
           </div>
         </div>
         <div class="single-video-btns flex-row-center">
-          {likeState.liked.some((like) => like._id === video._id) ? (
+          {console.log(like)}
+          {like.some((like) => like._id === video._id) ? (
             <button
               class="btn btn-s flex-row-center single-video-btn"
-              onClick={() => removeFromLike(token, video, likeDispatch)}
+              onClick={() => removeFromLike(token, video, setLike)}
             >
               <svg width="2rem" height="2rem" viewBox="0 0 1024 1024">
                 <path
@@ -72,7 +75,7 @@ function SingleVideo() {
           ) : (
             <button
               class="btn btn-s flex-row-center single-video-btn"
-              onClick={() => (token?addToLike(token, video, likeDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
+              onClick={() => (token?addToLike(token, video, setLike):navigate("/login",{replace:true,state:{from:location.pathname}}))}
             >
               <svg width="2rem" height="2rem" viewBox="0 0 1024 1024">
                 <path
@@ -83,13 +86,13 @@ function SingleVideo() {
               <span class="margin-l-1 white-color font-2">Like</span>
             </button>
           )}
-          {watchLaterState.watchLater.some(
+          {watchLater.some(
             (watchlater) => watchlater._id === video._id
           ) ? (
             <button
               class="btn btn-s flex-row-center single-video-btn"
               onClick={() =>
-                removeFromWatchLater(token, video, watchLaterDispatch)
+                removeFromWatchLater(token, video, setWatchLater)
               }
             >
               <svg width="2rem" height="2rem" viewBox="0 0 24 24">
@@ -103,7 +106,7 @@ function SingleVideo() {
           ) : (
             <button
               class="btn btn-s flex-row-center single-video-btn inactive-btn"
-              onClick={() => (token?addToWatchLater(token, video, watchLaterDispatch):navigate("/login",{replace:true,state:{from:location.pathname}}))}
+              onClick={() => (token?addToWatchLater(token, video, setWatchLater):navigate("/login",{replace:true,state:{from:location.pathname}}))}
             >
               <svg width="2rem" height="2rem" viewBox="0 0 24 24">
                 <path
