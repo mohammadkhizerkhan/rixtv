@@ -2,14 +2,13 @@ import React from "react";
 import { Link, useParams, useNavigate,useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useAuth, useHistory, useLike, useWatchLater } from "../context";
-import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater, addToHistory } from "../services";
+import { useAuth, useLike, useWatchLater } from "../context";
+import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater } from "../services";
 
 function SingleVideo() {
   const { videoId } = useParams();
   const { like, setLike } = useLike();
   const { watchLater, setWatchLater } = useWatchLater();
-  const {historyDispatch}=useHistory();
   const { token } = useAuth();
   const navigate = useNavigate();
   const location=useLocation();
@@ -147,7 +146,7 @@ function SingleVideo() {
             class="img-responsive video-channel-avatar"
           />
           {/* </Link> */}
-          <div class="channel-name font-2 font-bold">IGN</div>
+          <div class="channel-name font-2 font-bold">{channelName}</div>
         </div>
         <div class="video-desc flex-column-center">
           <h3>Description:</h3>
