@@ -27,7 +27,6 @@ function VideoCard({ video }) {
     likes,
     uploaded,
   } = video;
-  // console.log(like.some((item) => item._id === video._id))
   return (
     <>
       <div class="video-card" onMouseLeave={() => setMoreBtn(false)}>

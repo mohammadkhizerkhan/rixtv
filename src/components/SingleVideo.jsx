@@ -58,7 +58,6 @@ function SingleVideo() {
           </div>
         </div>
         <div class="single-video-btns flex-row-center">
-          {console.log(like)}
           {like.some((like) => like._id === video._id) ? (
             <button
               class="btn btn-s flex-row-center single-video-btn"

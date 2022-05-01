@@ -21,7 +21,6 @@ function History() {
             authorization: token,
           },
         });
-        // console.log(data);
         setHistory([...data.history]);
       } catch (error) {
         console.log("error in getting in history", error);
