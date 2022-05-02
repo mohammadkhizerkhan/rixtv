@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const createPlaylist = async (token,playlistName) => {
+const createPlaylists = async (token,playlistName) => {
     try {
       const {data} = await axios.post(
         "/api/user/playlists",
@@ -17,11 +17,26 @@ const createPlaylist = async (token,playlistName) => {
           }
       );
 
-      console.log(data)
-    //   setLike([...data.likes])
+      console.log(data.playlists)
     } catch (error) {
         console.log("error in creater playlist",error)
     }
   };
+const getPlaylists=async(token,setPlaylists)=>{
+    try {
+        const {data} = await axios.get(
+          "/api/user/playlists",
+            {
+              headers: {
+                authorization: token,
+              },
+            }
+        );
+        setPlaylists(data.playlists)
+      } catch (error) {
+          console.log("error in get playlist",error)
+      }
+}
 
-  export {createPlaylist}
+
+  export {createPlaylists,getPlaylists}

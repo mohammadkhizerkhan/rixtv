@@ -3,14 +3,14 @@ import {
     MdOutlineAddCircleOutline,
   } from "react-icons/md";
 import { useAuth } from '../context';
-import {createPlaylist} from "../services"
+import {createPlaylists} from "../services"
 
 function PlaylistForm({closeForm,video}) {
     const [playlistName, setPlaylistName] = useState("")
     const {token}=useAuth();
     const submitPlaylist=(e)=>{
         e.preventDefault();
-        playlistName && createPlaylist(token,playlistName)
+        playlistName && createPlaylists(token,playlistName)
     }
     return (
         <>
