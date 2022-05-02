@@ -18,6 +18,7 @@ function PlaylistForm({ closeForm, video }) {
   const submitPlaylist = (e) => {
     e.preventDefault();
     playlistName && createPlaylists(token, playlistName, setPlaylists);
+    setPlaylistName("")
   };
 
   useEffect(() => {
@@ -27,23 +28,24 @@ function PlaylistForm({ closeForm, video }) {
   return (
     <>
       <div className="playlistForm">
-        <form action="" className="flex-row-center justify-around">
+        <form action="" className="flex-column-center align-center">
           <input
             type="text"
-            className="input-style playlist-input"
+            className="input-style playlist-input margin-b-1"
             value={playlistName}
             onChange={(e) => setPlaylistName(e.target.value)}
           />
-          <button className="btn btn-icon" onClick={(e) => submitPlaylist(e)}>
-            <MdOutlineAddCircleOutline />
+          <button className="btn btn-s primary-btn font-15 font-bold margin-b-1" onClick={(e) => submitPlaylist(e)}>
+            Add Playlist
           </button>
-        </form>
         {playlists.map((playlist) => {
           // console.log(playlist.videos)
           return (
-            <label htmlFor="">
+            <label htmlFor="playlist-checkbox" className="flex-row-center playlist-label-checkbox">
               <input
                 type="checkbox"
+                id="playlist-checkbox"
+                className="input playlist-checkbox"
                 checked={playlist?.videos?.some(
                   (item) => item._id === video._id
                 )}
@@ -54,15 +56,15 @@ function PlaylistForm({ closeForm, video }) {
                         playlist._id,
                         video._id,
                         setPlaylistData
-                  
                       )
                     : addToPlaylist(token, video, playlist._id, setPlaylistData)
                 }
               />
-              {playlist.title}
+              <span className="font-17">{playlist.title}</span>
             </label>
           );
         })}
+        </form>
       </div>
       <div className="overlay playlistForm-overlay" onClick={closeForm}></div>
     </>

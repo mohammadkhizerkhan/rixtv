@@ -93,6 +93,9 @@ body {
 .justify-start{
   justify-content: flex-start;
 }
+.align-center{
+  align-items: center;
+}
 
 .navbar {
   padding: 1rem 4rem;
@@ -280,8 +283,15 @@ body {
   background-color: var(--background-color3);
 }
 
+.playlist-label-checkbox{
+  align-self: flex-start;
+}
+.playlist-checkbox{
+  width: 2rem;
+  height: 1.5rem;
+}
+
 .playlist-card{
-  
   width: 20rem;
   background-color: var(--border-color);
   display: flex;
