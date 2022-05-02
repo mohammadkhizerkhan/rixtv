@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth, usePlaylist } from "../context";
 import {
   createPlaylists,
@@ -12,13 +13,23 @@ import {
 
 function PlaylistForm({ closeForm, video }) {
   const [playlistName, setPlaylistName] = useState("");
+  const location=useLocation();
+  const navigate=useNavigate();
   const { token } = useAuth();
   const { playlists, setPlaylists, setPlaylistData, playlistData } =
     usePlaylist();
   const submitPlaylist = (e) => {
     e.preventDefault();
-    playlistName && createPlaylists(token, playlistName, setPlaylists);
-    setPlaylistName("")
+    if(token){
+      playlistName && createPlaylists(token, playlistName, setPlaylists)
+      setPlaylistName("")
+    }
+    else{
+      navigate("/login", {
+        replace: true,
+        state: { from: location.pathname },
+      })
+    }
   };
 
   useEffect(() => {
