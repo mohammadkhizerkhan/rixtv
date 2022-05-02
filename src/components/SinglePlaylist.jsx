@@ -14,7 +14,7 @@ function SinglePlaylist() {
     console.log(playlistData?.videos)
     return (
         <>
-        <h1>this is {playlistData?.title}</h1>
+        {(playlistData.length)?<h1>this is {playlistData?.title}</h1>:<h1>this playlist is empty</h1>}
             <section class="video-listing flex-row-wrap">
                 {
                     playlistData?.videos?.map(video=>{

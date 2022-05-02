@@ -16,12 +16,12 @@ function Playlist() {
       {playlists.map((playlist) => {
         return (
           <div className="playlist-card">
-            <Link to={`/playlists/${playlist._id}`} key={playlist._id} className="font-15">
+            <Link to={`/playlists/${playlist._id}`} key={playlist._id} className="font-15 clr-white">
             <h1>{playlist.title}</h1>
             </Link>
             <button
               onClick={() => deletePlaylist(token, playlist._id, setPlaylists)}
-              className="btn btn-m primary-btn font-1 font-bold"
+              className="btn btn-s primary-btn font-15 font-bold"
             >
               delete
             </button>

@@ -63,7 +63,9 @@ body {
 .primary-btn:hover {
   background-color: var(--primary);
 }
-
+.clr-white{
+  color: var(--white-text-color);
+}
 .flex-row-center {
   display: flex;
   flex-direction: row;
@@ -279,6 +281,7 @@ body {
 }
 
 .playlist-card{
+  
   width: 20rem;
   background-color: var(--border-color);
   display: flex;
