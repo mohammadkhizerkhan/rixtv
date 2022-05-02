@@ -11,7 +11,8 @@ import {
   AuthProvider,
   LikeProvider,
   WatchLaterProvider,
-  HistoryProvider
+  HistoryProvider,
+  PlaylistProvider,
 } from "./context";
 
 // Call make Server
@@ -22,13 +23,15 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <DataProvider>
-          <HistoryProvider>
-            <WatchLaterProvider>
-              <LikeProvider>
-                <App />
-              </LikeProvider>
-            </WatchLaterProvider>
-          </HistoryProvider>
+          <PlaylistProvider>
+            <HistoryProvider>
+              <WatchLaterProvider>
+                <LikeProvider>
+                  <App />
+                </LikeProvider>
+              </WatchLaterProvider>
+            </HistoryProvider>
+          </PlaylistProvider>
         </DataProvider>
       </AuthProvider>
     </BrowserRouter>

@@ -6,6 +6,7 @@ import {
   Categories,
   VideoListing,
   SingleVideo,
+  SinglePlaylist,
 } from "../src/components";
 import {
   History,
@@ -45,8 +46,9 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="/watchlater" element={<Watchlater />} />
               <Route path="/liked" element={<Liked />} />
-              <Route path="/playlist" element={<Playlist />} />
+              <Route path="/playlists" element={<Playlist />} />
               <Route path="/history" element={<History />} />
+              <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
             </Route>
           </Route>
         </Routes>

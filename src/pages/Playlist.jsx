@@ -1,21 +1,36 @@
-import {React,useEffect,useState} from 'react'
-import axios from "axios";
-import { useAuth } from '../context';
-import { getPlaylists } from '../services';
-
+import { React, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useAuth, usePlaylist } from "../context";
+import { getPlaylists, deletePlaylist } from "../services";
 
 function Playlist() {
-    const {token}=useAuth();
-    const [playlists, setPlaylists] = useState([])
-    useEffect(() => {
-        getPlaylists(token,setPlaylists)
-    }, [])
-    console.log(playlists)
-    return (
-        <>
-        <h1>this is Playlist page</h1>
-        </>
-    )
+  const { token } = useAuth();
+  const { playlists, setPlaylists,setPlaylistData,playlistData } = usePlaylist();
+  useEffect(() => {
+    getPlaylists(token, setPlaylists);
+  }, []);
+  return (
+    <>
+      {(playlists.length)?<></>:<h1>you have not added any playlist</h1>}
+      <section class="video-listing flex-row-wrap">
+      {playlists.map((playlist) => {
+        return (
+          <div className="playlist-card">
+            <Link to={`/playlists/${playlist._id}`} key={playlist._id} className="font-15">
+            <h1>{playlist.title}</h1>
+            </Link>
+            <button
+              onClick={() => deletePlaylist(token, playlist._id, setPlaylists)}
+              className="btn btn-m primary-btn font-1 font-bold"
+            >
+              delete
+            </button>
+          </div>
+        );
+      })}
+      </section>
+    </>
+  );
 }
 
-export default Playlist
+export default Playlist;

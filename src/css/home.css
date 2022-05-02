@@ -69,6 +69,7 @@ body {
   flex-direction: row;
   align-items: center;
 }
+
 .justify-around{
   justify-content: space-around;
 }
@@ -86,6 +87,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.justify-start{
+  justify-content: flex-start;
 }
 
 .navbar {
@@ -151,6 +155,7 @@ body {
 .main {
     flex-grow: 1;
   padding: 1rem;
+  min-height: calc(100vh - 7.1rem);
   background-color: var(--background-color2);
 }
 
@@ -271,4 +276,13 @@ body {
 
 .dropdown-btn:hover{
   background-color: var(--background-color3);
+}
+
+.playlist-card{
+  width: 20rem;
+  background-color: var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
