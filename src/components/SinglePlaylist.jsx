@@ -11,10 +11,10 @@ function SinglePlaylist() {
     useEffect(() => {
         getSinglePlaylist(token,playlistId,setPlaylistData);
     }, [])
-    console.log(playlistData?.videos)
+    console.log(playlistData)
     return (
         <>
-        {(playlistData.length)?<h1>this is {playlistData?.title}</h1>:<h1>this playlist is empty</h1>}
+        {(playlistData?.videos?.length)?<h1>this is {playlistData?.title}</h1>:<h1>this playlist is empty</h1>}
             <section class="video-listing flex-row-wrap">
                 {
                     playlistData?.videos?.map(video=>{

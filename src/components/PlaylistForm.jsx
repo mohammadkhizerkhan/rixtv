@@ -34,7 +34,7 @@ function PlaylistForm({ closeForm, video }) {
 
   useEffect(() => {
     getPlaylists(token, setPlaylists);
-  }, [playlists]);
+  }, [playlistData]);
 
   return (
     <>
