@@ -60,7 +60,7 @@ const getSinglePlaylist = async(token,playlistId,setPlaylistData) => {
   }
 };
 
-const addToPlaylist = async (token, video, playlistId,setPlaylistData,setPlaylists) => {
+const addToPlaylist = async (token, video, playlistId,setPlaylistData) => {
   try {
     const { data } = await axios.post(
       `/api/user/playlists/${playlistId}`,
@@ -73,7 +73,8 @@ const addToPlaylist = async (token, video, playlistId,setPlaylistData,setPlaylis
         },
       }
       );
-    setPlaylistData(data.playlist.videos)
+      console.log(data.playlist)
+    setPlaylistData(data.playlist)
   } catch (error) {
     console.log("error in add video to playlist",error)
   }
@@ -88,7 +89,8 @@ const removeFromPlaylist = async (token, playlistId,videoId,setPlaylistData) => 
         },
       }
     );
-    setPlaylistData(data.videos)
+    console.log(data.playlist)
+    setPlaylistData(data.playlist)
   } catch (error) {
     console.log("error in delete video to playlist",error)
   }

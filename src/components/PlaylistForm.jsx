@@ -50,12 +50,11 @@ function PlaylistForm({ closeForm, video }) {
             Add Playlist
           </button>
         {playlists.map((playlist) => {
-          // console.log(playlist.videos)
           return (
-            <label htmlFor="playlist-checkbox" className="flex-row-center playlist-label-checkbox">
+            <label htmlFor={playlist._id} key={playlist._id} className="flex-row-center playlist-label-checkbox">
               <input
                 type="checkbox"
-                id="playlist-checkbox"
+                id={playlist._id}
                 className="input playlist-checkbox"
                 checked={playlist?.videos?.some(
                   (item) => item._id === video._id

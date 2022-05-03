@@ -11,7 +11,6 @@ function SinglePlaylist() {
     useEffect(() => {
         getSinglePlaylist(token,playlistId,setPlaylistData);
     }, [])
-    console.log(playlistData)
     return (
         <>
         {(playlistData?.videos?.length)?<h1>this is {playlistData?.title}</h1>:<h1>this playlist is empty</h1>}
