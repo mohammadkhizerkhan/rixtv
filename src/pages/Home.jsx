@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 function Home() {
   return (
     <>
-      <main class="main flex-column-center">
+      <main class="main flex-column-center justify-start">
         <Outlet/>
       </main>
     </>

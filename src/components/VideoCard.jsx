@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate, Navigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth, useHistory, useLike, useWatchLater } from "../context";
 import {
   addToLike,
@@ -9,8 +9,10 @@ import {
   addToHistory,
   removeFromHistory
 } from "../services";
+import PlaylistForm from "./PlaylistForm";
 function VideoCard({ video }) {
   const [moreBtn, setMoreBtn] = useState(false);
+  const [playlistForm, setPlaylistForm] = useState(false)
   const location = useLocation();
   const { token } = useAuth();
   const { history,setHistory } = useHistory();
@@ -24,10 +26,8 @@ function VideoCard({ video }) {
     channelName,
     channelImg,
     channelLink,
-    likes,
     uploaded,
   } = video;
-  // console.log(like.some((item) => item._id === video._id))
   return (
     <>
       <div class="video-card" onMouseLeave={() => setMoreBtn(false)}>
@@ -123,7 +123,12 @@ function VideoCard({ video }) {
                   >
                     Add to watchLater
                   </button>
-                )} 
+                )}
+                {
+                  <button class="btn btn-m dropdown-btn text-left font-bold font-15" onClick={()=>setPlaylistForm(!playlistForm)}>
+                  Add to Playlist
+                </button>
+                } 
                 {
                   history.some(item=>item._id===video._id)&&(
                     <button
@@ -141,6 +146,13 @@ function VideoCard({ video }) {
           </div>
         </div>
       </div>
+      {
+        playlistForm && (
+          <div className="playlistForm-div">
+            <PlaylistForm  closeForm={() => setPlaylistForm(false)} video={video}/>
+          </div>
+        )
+      }
     </>
   );
 }

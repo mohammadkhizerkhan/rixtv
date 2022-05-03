@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import axios from "axios";
-import { useState } from "react";
 import VideoCard from "../components/VideoCard";
 import { useAuth, useHistory } from "../context";
 import { deleteAllHistory } from "../services";
@@ -21,7 +20,6 @@ function History() {
             authorization: token,
           },
         });
-        // console.log(data);
         setHistory([...data.history]);
       } catch (error) {
         console.log("error in getting in history", error);
