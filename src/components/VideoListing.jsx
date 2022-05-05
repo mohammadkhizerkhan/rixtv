@@ -10,7 +10,7 @@ function VideoListing() {
         let filteredVideos=[...videos]
         if(category){
             if(category==="All"){
-                return [...videos]
+                filteredVideos=[...videos]
             }
             else{
                 filteredVideos=filteredVideos.filter(item=>item.category===category)
@@ -19,6 +19,7 @@ function VideoListing() {
         if(search){
             filteredVideos=filteredVideos.filter(item=>item.title.toLowerCase().includes(search.toLowerCase()))
         }
+        console.log(filteredVideos)
         return filteredVideos
     }
     return (
