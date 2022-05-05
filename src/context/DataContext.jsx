@@ -5,7 +5,7 @@ const DataContext=createContext();
 
 const DataProvider=({children})=>{
     const [videos, setVideos] = useState([])
-    const [filter,setFilter]=useReducer(filterReducer,{
+    const [filterState,filterDispatach]=useReducer(filterReducer,{
         category:"",
         search:""
     })
@@ -20,7 +20,7 @@ const DataProvider=({children})=>{
         })();
     }, [])
     return (
-        <DataContext.Provider value={{videos,filter,setFilter}}>
+        <DataContext.Provider value={{videos,filterState,filterDispatach}}>
             {children}
         </DataContext.Provider>
     )

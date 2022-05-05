@@ -13,17 +13,17 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Trailer",
+    categoryName: "trailer",
     
   },
   {
     _id: uuid(),
-    categoryName: "Game Play",
+    categoryName: "gameplay",
     
   },
   {
     _id: uuid(),
-    categoryName: "Tutorial",
+    categoryName: "tutorial",
     
   },
 ];

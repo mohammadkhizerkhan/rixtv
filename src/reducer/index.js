@@ -2,10 +2,8 @@ import { ACTION_TYPE } from "../Action";
 
 const filterReducer=(state,action)=>{
     switch (action.type) {
-        case "":
-            
-            break;
-    
+        case ACTION_TYPE.CATEGORIES:
+            return {...state,category:action.payload}   
         default:
             return state
     }

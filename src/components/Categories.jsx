@@ -1,8 +1,12 @@
 import axios from "axios";
 import {React,useEffect,useState} from "react";
+import { ACTION_TYPE } from "../Action";
+import {useData} from '../context'
 
 function Categories() {
   const [categories, setCategories] = useState([])
+  const {filterState,filterDispatach}=useData();
+
   useEffect(() => {
     (
       async ()=>{
@@ -15,7 +19,6 @@ function Categories() {
       }
     )();
   }, [])
-  console.log(categories)
   return (
     <div class="main-categories">
       {
@@ -25,7 +28,7 @@ function Categories() {
             className="input-wrapper color-white btn-category"
         >
             <label htmlFor={item._id} key={item._id}>
-              <input id={item._id} className="btn-tab-input" type="checkbox" key={item._id}/>
+              <input id={item._id} className="btn-tab-input" name="category" type="radio" key={item._id} onChange={()=>filterDispatach({type:ACTION_TYPE.CATEGORIES,payload:item.categoryName})} />
               <span class="category">
               {item.categoryName}
               </span>
