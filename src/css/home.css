@@ -81,6 +81,10 @@ html {
   margin-left: 2rem;
 }
 
+.btn-4{
+  width: 4rem;
+  height: 4rem;
+}
 
 
 .primary-btn:hover {

@@ -35,7 +35,7 @@ function Navbar() {
           onChange={(e) => searchHandler(e)}
         />
       </div>
-      <button className="btn btn-icon" onClick={() => toggleThemeHandler()}>
+      <button className="btn btn-icon btn-4" onClick={() => toggleThemeHandler()}>
         {theme === "dark" ? (
           <svg width="2rem" height="2rem" viewBox="0 0 24 24">
             <path
