@@ -1,10 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { ACTION_TYPE } from "../Action";
 import { useAuth } from "../context";
+import {useData} from '../context'
 
 
 function Navbar() {
   const {token}=useAuth();
+  const {filterDispatach}=useData();
   return (
     <nav class="flex-row-center navbar">
       <Link class="flex-row-center logo-div" to="/home">
@@ -17,7 +20,7 @@ function Navbar() {
       </Link>
       <div class="flex-row-center search-div">
         <form action="" class="flex-row-center search-form">
-          <input type="text" class="input input-search" />
+          <input type="text" class="input input-search" onChange={(e)=>filterDispatach({type:ACTION_TYPE.SEARCH,payload:e.target.value})}/>
           <button class="btn primary-btn flex-row-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"

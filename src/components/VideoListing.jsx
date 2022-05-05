@@ -4,8 +4,7 @@ import VideoCard from './VideoCard';
 function VideoListing() {
     const {videos}=useData();
     const {filterState}=useData();
-    const {category}=filterState;
-    console.log(category)
+    const {category,search}=filterState;
 
     const filteredData=()=>{
         let filteredVideos=[...videos]
@@ -17,10 +16,11 @@ function VideoListing() {
                 filteredVideos=filteredVideos.filter(item=>item.category===category)
             }
         }
-
+        if(search){
+            filteredVideos=filteredVideos.filter(item=>item.title.toLowerCase().includes(search.toLowerCase()))
+        }
         return filteredVideos
     }
-    console.log(filteredData())
     return (
         <section class="video-listing flex-row-wrap">
             {
