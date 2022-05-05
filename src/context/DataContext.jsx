@@ -1,10 +1,14 @@
-import { createContext,useContext,useState,useEffect } from "react";
+import { createContext,useContext,useState,useEffect,useReducer } from "react";
 import axios from "axios";
-
+import { filterReducer } from "../reducer";
 const DataContext=createContext();
 
 const DataProvider=({children})=>{
     const [videos, setVideos] = useState([])
+    const [filterState,filterDispatach]=useReducer(filterReducer,{
+        category:"",
+        search:""
+    })
     useEffect(() => {
         (async ()=>{
             try {
@@ -16,7 +20,7 @@ const DataProvider=({children})=>{
         })();
     }, [])
     return (
-        <DataContext.Provider value={{videos}}>
+        <DataContext.Provider value={{videos,filterState,filterDispatach}}>
             {children}
         </DataContext.Provider>
     )
