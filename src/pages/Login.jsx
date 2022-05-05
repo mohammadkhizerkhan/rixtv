@@ -34,7 +34,7 @@ function Login() {
 
   return (
     <>
-      <div class="form-container">
+      <div class="form-container text-color">
         <h1 class="text-center">LOGIN</h1>
         <form class="form">
           <label htmlFor="" class="input-label font-17">
@@ -66,29 +66,23 @@ function Login() {
               <a href="" class="font-17">Forgot your Password?</a>
             </span>
           </label>
-          <label htmlFor="" class="input-label text-center">
             <button
               type="button"
               href=""
-              className="btn btn-m primary-btn font-17 font-bold"
+              className="btn btn-m font-17 font-bold single-video-btn text-color margin-b-1 auth-btn"
               onClick={fillTestCredentials}
             >
               Fill with Test Credentials
             </button>
-          </label>
-          <label htmlFor="" class="input-label text-center">
-            <button type="submit" className="btn btn-m primary-btn font-17 font-bold" onClick={(e) => loginHandler(e)}>Login</button>
-          </label>
-          <label htmlFor="" class="input-label text-center">
+            <button type="submit" className="btn btn-m font-17 font-bold single-video-btn text-color margin-b-1 auth-btn" onClick={(e) => loginHandler(e)}>Login</button>
             <button
               type="button"
               href="/components/auth/signUp.html" 
-              className="btn btn-m primary-btn font-17 font-bold"
+              className="btn btn-m font-17 font-bold single-video-btn text-color margin-b-1 auth-btn"
               onClick={() => navigate("/signup")}
             >
               Create New Account
             </button>
-          </label>
         </form>
       </div>
     </>

@@ -35,10 +35,10 @@ function SignUp() {
 
   return (
     <>
-      <div class="form-container">
+      <div class="form-container text-color">
         <h1 class="text-center">SIGNUP</h1>
         <form class="form">
-          <label htmlFor="" class="input-label font-17">
+          <label htmlFor="" class="input-label font-17 ">
             First name:
             <input
               type="text"
@@ -86,26 +86,22 @@ function SignUp() {
             <input type="checkbox" class="checkbox-input" />
             <span class="inputs-title font-17">I accept all Terms & Conditions</span>
           </label>
-          <label htmlFor="" class="input-label text-center formBtn">
             <button
               type="submit"
               href=""
               onClick={(e) => signUpHandler(e)}
-              className="btn btn-m primary-btn font-17 font-bold"
+              className="btn btn-m font-17 font-bold single-video-btn text-color margin-b-1 auth-btn"
             >
               SIGN UP
             </button>
-          </label>
-          <label htmlFor="" class="input-label text-center formBtn">
             <button
               type="button"
               href=""
               onClick={() => navigate("/login")}
-              className="btn btn-m primary-btn font-17 font-bold"
+              className="btn btn-m font-17 font-bold single-video-btn text-color margin-b-1 auth-btn"
             >
               Already Have An Account
             </button>
-          </label>
         </form>
       </div>
     </>
