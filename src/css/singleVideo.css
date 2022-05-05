@@ -19,8 +19,10 @@
 
 .single-video-btn{
     background-color: var(--background-color1);
+    border: 2px solid var(--border-color);
     border-radius: 3px;
     margin-right: 1rem;
+    color: var(--text-color);
 }
 
 .active-btn{

@@ -11,7 +11,7 @@ function Playlist() {
   }, []);
   return (
     <>
-      {(playlists.length)?<></>:<h1>you have not added any playlist</h1>}
+      {(playlists.length)?<></>:<h1 className="text-center text-color">you have not added any playlist</h1>}
       <section class="video-listing flex-row-wrap">
       {playlists.map((playlist) => {
         return (

@@ -19,10 +19,12 @@ import {
   Watchlater,
 } from "./pages";
 import { RequireAuth } from "./services";
+import { useTheme } from "./context";
 function App() {
   const location=useLocation();
+  const {theme}=useTheme();
   return (
-    <div className="App">
+    <div className={`App ${theme==="dark"?"dark-mode":"light-mode"}`}>
       <Navbar />
       <div className="flex-row">
         <Sidebar />

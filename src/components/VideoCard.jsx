@@ -55,7 +55,7 @@ function VideoCard({ video }) {
           </a>
           <div class="video-card-desc">
             <h3 class="video-card-title">{title}</h3>
-            <Link class="channel-name white-color font-bold" to={channelLink}>
+            <Link class="channel-name font-bold" to={channelLink}>
               {channelName}
             </Link>
             <div class="video-views">

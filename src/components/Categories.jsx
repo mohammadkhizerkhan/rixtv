@@ -25,7 +25,7 @@ function Categories() {
         categories.map(item=>{
           return (
             <div
-            className="input-wrapper color-white btn-category"
+            className="input-wrapper btn-category"
         >
             <label htmlFor={item._id} key={item._id}>
               <input id={item._id} className="btn-tab-input" name="category" type="radio" key={item._id} onChange={()=>filterDispatach({type:ACTION_TYPE.CATEGORIES,payload:item.categoryName})} />
