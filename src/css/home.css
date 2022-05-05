@@ -39,6 +39,10 @@ body {
   height: 4rem;
 }
 
+.p-5{
+  padding: 5px;
+}
+
 .font-2 {
   font-size: 2rem;
 }
@@ -112,7 +116,6 @@ body {
 
 .logo-div {
   flex-grow: 1;
-  width: 0%;
   height: 5rem;
   color: var(--white-text-color);
 }
