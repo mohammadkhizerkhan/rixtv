@@ -7,34 +7,29 @@ import {
   addToWatchLater,
   removeFromWatchLater,
   addToHistory,
-  removeFromHistory
+  removeFromHistory,
 } from "../services";
 import PlaylistForm from "./PlaylistForm";
 function VideoCard({ video }) {
   const [moreBtn, setMoreBtn] = useState(false);
-  const [playlistForm, setPlaylistForm] = useState(false)
+  const [playlistForm, setPlaylistForm] = useState(false);
   const location = useLocation();
   const { token } = useAuth();
-  const { history,setHistory } = useHistory();
+  const { history, setHistory } = useHistory();
   const { like, setLike } = useLike();
   const { watchLater, setWatchLater } = useWatchLater();
   const navigate = useNavigate();
-  const {
-    _id,
-    title,
-    views,
-    channelName,
-    channelImg,
-    channelLink,
-    uploaded,
-  } = video;
+  const { _id, title, views, channelName, channelImg, channelLink, uploaded } =
+    video;
   return (
     <>
       <div class="video-card" onMouseLeave={() => setMoreBtn(false)}>
         <Link to={`/video/${_id}`}>
           <div
             className="thumbnail-div"
-            onClick={() =>history.every((item) => item._id !== video._id) && addToHistory(token, video,setHistory)
+            onClick={() =>
+              history.every((item) => item._id !== video._id) &&
+              addToHistory(token, video, setHistory)
             }
           >
             <img
@@ -65,7 +60,7 @@ function VideoCard({ video }) {
           <div className="dropdown-label-div">
             <button
               className="btn btn-icon btn-4"
-              onClick={() =>setMoreBtn(!moreBtn)}
+              onClick={() => setMoreBtn(!moreBtn)}
             >
               <svg width="3rem" height="3rem" viewBox="0 0 24 24">
                 <path
@@ -78,14 +73,14 @@ function VideoCard({ video }) {
               <div className="dropdown-label-btns">
                 {like?.some((item) => item._id === video._id) ? (
                   <button
-                    className="btn btn-m dropdown-btn text-left font-bold font-15"
+                    className="btn btn-m dropdown-btn text-left font-bold font-15 text-color"
                     onClick={() => removeFromLike(token, video, setLike)}
                   >
                     Dislike
                   </button>
                 ) : (
                   <button
-                    className="btn btn-m dropdown-btn text-left font-bold font-15"
+                    className="btn btn-m dropdown-btn text-left font-bold font-15 text-color"
                     onClick={() =>
                       token
                         ? addToLike(token, video, setLike)
@@ -97,12 +92,12 @@ function VideoCard({ video }) {
                   >
                     Like
                   </button>
-                )} 
+                )}
                 {watchLater.some(
                   (watchLater) => watchLater._id === video._id
                 ) ? (
                   <button
-                    className="btn btn-m dropdown-btn text-left font-bold font-15"
+                    className="btn btn-m dropdown-btn text-left font-bold font-15 text-color"
                     onClick={() =>
                       removeFromWatchLater(token, video, setWatchLater)
                     }
@@ -111,7 +106,7 @@ function VideoCard({ video }) {
                   </button>
                 ) : (
                   <button
-                    className="btn btn-m dropdown-btn text-left font-bold font-15"
+                    className="btn btn-m dropdown-btn text-left font-bold font-15 text-color"
                     onClick={() =>
                       token
                         ? addToWatchLater(token, video, setWatchLater)
@@ -125,34 +120,34 @@ function VideoCard({ video }) {
                   </button>
                 )}
                 {
-                  <button class="btn btn-m dropdown-btn text-left font-bold font-15" onClick={()=>setPlaylistForm(!playlistForm)}>
-                  Add to Playlist
-                </button>
-                } 
-                {
-                  history.some(item=>item._id===video._id)&&(
-                    <button
+                  <button
+                    class="btn btn-m dropdown-btn text-left font-bold font-15 text-color"
+                    onClick={() => setPlaylistForm(!playlistForm)}
+                  >
+                    Add to Playlist
+                  </button>
+                }
+                {history.some((item) => item._id === video._id) && (
+                  <button
                     className="btn btn-m dropdown-btn text-left font-bold font-15"
-                    onClick={() =>
-                      removeFromHistory(token, video,setHistory)
-                    }
+                    onClick={() => removeFromHistory(token, video, setHistory)}
                   >
                     Remove from History
                   </button>
-                  )
-                }
+                )}
               </div>
             )}
           </div>
         </div>
       </div>
-      {
-        playlistForm && (
-          <div className="playlistForm-div">
-            <PlaylistForm  closeForm={() => setPlaylistForm(false)} video={video}/>
-          </div>
-        )
-      }
+      {playlistForm && (
+        <div className="playlistForm-div">
+          <PlaylistForm
+            closeForm={() => setPlaylistForm(false)}
+            video={video}
+          />
+        </div>
+      )}
     </>
   );
 }
