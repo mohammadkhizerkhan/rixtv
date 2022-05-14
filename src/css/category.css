@@ -7,10 +7,11 @@
 }
 
 .btn-category {
-    background-color: var(--background-color-3);
+    background-color: var(--background-color3);
     border-radius: 0.5rem;
     display: inline-block;
     cursor: pointer;
+    color: var(--text-color);
 }
 
 .btn-category label span {
@@ -19,12 +20,13 @@
     width: 100%;
     display: block;
     box-sizing: border-box;
+
 }
 
 .btn-category:hover,
 .btn-category input:checked + span {
     background-color: var(--primary);
-    color: var(--text-color);
+    color: var(--hover-text-color);
 }
 
 .btn-category * {

@@ -18,7 +18,7 @@
   
 .input-search {
     width: 100%;
-    color: var(--white-text-color);
+    color: var(--text-color);
     border: 1px solid var(--border-color);
     border-radius: 0;
     font-size: 1rem;

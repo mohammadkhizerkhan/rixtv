@@ -40,7 +40,7 @@ function History() {
         </>
       ) : (
         <>
-          <h1 className="text-center">You have not watched any videos!!</h1>
+          <h1 className="text-center text-color">You have not watched any videos!!</h1>
           <button
             className="btn btn-m primary-btn font-17 font-bold"
             onClick={() => navigate("/home")}

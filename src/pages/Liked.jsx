@@ -32,7 +32,7 @@ function Liked() {
     return (
         <>
         {
-           ( like.length) ?<></>:<h1>You have not liked any videos!!</h1>
+           ( like.length) ?<></>:<h1 className='text-center text-color'>You have not liked any videos!!</h1>
         }
         <section class="video-listing flex-row-wrap">
         {

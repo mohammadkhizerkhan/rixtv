@@ -29,7 +29,7 @@ function WatchLater() {
     return (
         <>
         {
-           ( watchLater.length) ?<></>:<h1>You have not added any videos to watchLater!!</h1>
+           ( watchLater.length) ?<></>:<h1 className="text-center text-color">You have not added any videos to watchLater!!</h1>
         }
         <section class="video-listing flex-row-wrap">
         {

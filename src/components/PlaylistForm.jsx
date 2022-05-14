@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth, usePlaylist } from "../context";
 import {
@@ -70,7 +69,7 @@ function PlaylistForm({ closeForm, video }) {
                     : addToPlaylist(token, video, playlist._id, setPlaylistData)
                 }
               />
-              <span className="font-17">{playlist.title}</span>
+              <span className="font-17 text-color">{playlist.title}</span>
             </label>
           );
         })}
