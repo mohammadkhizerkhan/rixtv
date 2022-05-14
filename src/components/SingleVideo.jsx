@@ -27,6 +27,7 @@ import {
   addToWatchLater,
   removeFromWatchLater,
 } from "../services";
+import PlaylistForm from "./PlaylistForm";
 
 function SingleVideo() {
   const { videoId } = useParams();
@@ -37,6 +38,7 @@ function SingleVideo() {
   const location = useLocation();
   const { theme } = useTheme();
   const [video, setVideo] = useState({});
+  const [playlistForm, setPlaylistForm] = useState(false);
   const {
     _id,
     title,
@@ -139,7 +141,7 @@ function SingleVideo() {
             {theme === "dark" ? <LighLink /> : <DarkLink />}
             <span class="margin-l-1 font-2">Share</span>
           </button>
-          <button class="btn btn-s flex-row-center single-video-btn">
+          <button class="btn btn-s flex-row-center single-video-btn"  onClick={() => setPlaylistForm(!playlistForm)}>
             {theme === "dark" ? <LightPlaylist /> : <DarkPlaylist />}
             <span class="margin-l-1 font-2">SAVE</span>
           </button>
@@ -159,6 +161,14 @@ function SingleVideo() {
           <p class="line-height-m text-color">{desc}</p>
         </div>
       </section>
+      {playlistForm && (
+        <div className="playlistForm-div">
+          <PlaylistForm
+            closeForm={() => setPlaylistForm(false)}
+            video={video}
+          />
+        </div>
+      )}
     </>
   );
 }
