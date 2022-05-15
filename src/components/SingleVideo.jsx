@@ -1,10 +1,33 @@
 import React from "react";
-import { Link, useParams, useNavigate,useLocation } from "react-router-dom";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { DarkChecked, DarkDislike, DarkHistory, DarkHome, DarkLike, DarkLink, DarkPlaylist, DarkWatchlater, LighLink, LightChecked, LightDislike, LightHistory, LightHome, LightLike, LightPlaylist, LightWatchlater } from "../assets";
+import {
+  DarkChecked,
+  DarkDislike,
+  DarkHistory,
+  DarkHome,
+  DarkLike,
+  DarkLink,
+  DarkPlaylist,
+  DarkWatchlater,
+  LighLink,
+  LightChecked,
+  LightDislike,
+  LightHistory,
+  LightHome,
+  LightLike,
+  LightPlaylist,
+  LightWatchlater,
+} from "../assets";
 import { useAuth, useLike, useTheme, useWatchLater } from "../context";
-import { addToLike, removeFromLike,addToWatchLater,removeFromWatchLater } from "../services";
+import {
+  addToLike,
+  removeFromLike,
+  addToWatchLater,
+  removeFromWatchLater,
+} from "../services";
+import PlaylistForm from "./PlaylistForm";
 
 function SingleVideo() {
   const { videoId } = useParams();
@@ -12,9 +35,10 @@ function SingleVideo() {
   const { watchLater, setWatchLater } = useWatchLater();
   const { token } = useAuth();
   const navigate = useNavigate();
-  const location=useLocation();
-  const {theme}=useTheme();
+  const location = useLocation();
+  const { theme } = useTheme();
   const [video, setVideo] = useState({});
+  const [playlistForm, setPlaylistForm] = useState(false);
   const {
     _id,
     title,
@@ -37,7 +61,6 @@ function SingleVideo() {
       }
     })();
   }, [videoId]);
-  
 
   return (
     <>
@@ -64,68 +87,62 @@ function SingleVideo() {
               class="btn btn-s flex-row-center single-video-btn"
               onClick={() => removeFromLike(token, video, setLike)}
             >
-              {
-                theme === "dark" ?(<LightDislike/>):(<DarkDislike/>)
-              }
-              
+              {theme === "dark" ? <LightDislike /> : <DarkDislike />}
+
               <span class="margin-l-1 font-2">Dislike</span>
             </button>
           ) : (
             <button
               class="btn btn-s flex-row-center single-video-btn"
-              onClick={() => (token?addToLike(token, video, setLike):navigate("/login",{replace:true,state:{from:location.pathname}}))}
+              onClick={() =>
+                token
+                  ? addToLike(token, video, setLike)
+                  : navigate("/login", {
+                      replace: true,
+                      state: { from: location.pathname },
+                    })
+              }
             >
-              {theme === "dark" ? (
-              <LightLike/>
-            ) : (
-              <DarkLike/>
-            )}
+              {theme === "dark" ? <LightLike /> : <DarkLike />}
               <span class="margin-l-1  font-2">Like</span>
             </button>
           )}
-          {watchLater.some(
-            (watchlater) => watchlater._id === video._id
-          ) ? (
+          {watchLater.some((watchlater) => watchlater._id === video._id) ? (
             <button
               class="btn btn-s flex-row-center single-video-btn"
-              onClick={() =>
-                removeFromWatchLater(token, video, setWatchLater)
-              }
+              onClick={() => removeFromWatchLater(token, video, setWatchLater)}
             >
-              {theme === "dark" ? (
-              <LightChecked/>
-            ) : (
-              <DarkChecked/>
-            )}
+              {theme === "dark" ? <LightChecked /> : <DarkChecked />}
               <span class="margin-l-1 font-2">Watchlater</span>
             </button>
           ) : (
             <button
               class="btn btn-s flex-row-center single-video-btn inactive-btn"
-              onClick={() => (token?addToWatchLater(token, video, setWatchLater):navigate("/login",{replace:true,state:{from:location.pathname}}))}
+              onClick={() =>
+                token
+                  ? addToWatchLater(token, video, setWatchLater)
+                  : navigate("/login", {
+                      replace: true,
+                      state: { from: location.pathname },
+                    })
+              }
             >
-              {theme === "dark" ? (
-              <LightWatchlater/>
-            ) : (
-              <DarkWatchlater/>
-            )}
+              {theme === "dark" ? <LightWatchlater /> : <DarkWatchlater />}
               <span class="margin-l-1 font-2">Watchlater</span>
             </button>
           )}
-          <button class="btn btn-s flex-row-center single-video-btn inactive-btn">
-          {theme === "dark" ? (
-              <LighLink/>
-            ) : (
-              <DarkLink/>
-            )}
+          <button
+            class="btn btn-s flex-row-center single-video-btn inactive-btn"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              alert("link copied")
+            }}
+          >
+            {theme === "dark" ? <LighLink /> : <DarkLink />}
             <span class="margin-l-1 font-2">Share</span>
           </button>
-          <button class="btn btn-s flex-row-center single-video-btn">
-          {theme === "dark" ? (
-              <LightPlaylist/>
-            ) : (
-              <DarkPlaylist/>
-            )}
+          <button class="btn btn-s flex-row-center single-video-btn"  onClick={() => setPlaylistForm(!playlistForm)}>
+            {theme === "dark" ? <LightPlaylist /> : <DarkPlaylist />}
             <span class="margin-l-1 font-2">SAVE</span>
           </button>
         </div>
@@ -144,6 +161,14 @@ function SingleVideo() {
           <p class="line-height-m text-color">{desc}</p>
         </div>
       </section>
+      {playlistForm && (
+        <div className="playlistForm-div">
+          <PlaylistForm
+            closeForm={() => setPlaylistForm(false)}
+            video={video}
+          />
+        </div>
+      )}
     </>
   );
 }

@@ -17,7 +17,7 @@ function Playlist() {
         return (
           <div className="playlist-card">
             <Link to={`/playlists/${playlist._id}`} key={playlist._id} className="font-15 clr-white">
-            <h1>{playlist.title}</h1>
+            <h1 className="text-color">{playlist.title}</h1>
             </Link>
             <button
               onClick={() => deletePlaylist(token, playlist._id, setPlaylists)}
