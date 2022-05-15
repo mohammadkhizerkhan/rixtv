@@ -17,7 +17,6 @@ const addToHistory =async (token, video,setHistory) => {
        setHistory(data.history)
       } catch (error) {
         console.log("error in add to history",error)
-        CallToast("error",error.message)
       }
     };
     
