@@ -335,3 +335,8 @@ html {
   align-items: center;
   padding: 1rem;
 }
+
+.toast{
+  font-size: 1.5rem;
+  font-weight: 600;
+}

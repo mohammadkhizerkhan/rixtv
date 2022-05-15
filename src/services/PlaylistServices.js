@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CallToast } from "./CallToast";
 
 const createPlaylists = async (token, playlistName, setPlaylists) => {
   try {
@@ -17,10 +18,12 @@ const createPlaylists = async (token, playlistName, setPlaylists) => {
       }
     );
     setPlaylists(data.playlists);
+    CallToast("success","Created a Playlist")
   } catch (error) {
     console.log("error in creater playlist", error);
   }
 };
+
 const getPlaylists = async (token, setPlaylists) => {
   try {
     const { data } = await axios.get("/api/user/playlists", {
@@ -42,6 +45,7 @@ const deletePlaylist = async (token, playlistId, setPlaylists) => {
       },
     });
     setPlaylists(data.playlists);
+    CallToast("success","Playlist Deleted")
   } catch (error) {
     console.log("error in delete playlist", error);
   }
@@ -73,10 +77,10 @@ const addToPlaylist = async (token, video, playlistId,setPlaylistData) => {
         },
       }
       );
-      console.log(data.playlist)
-    setPlaylistData(data.playlist)
-  } catch (error) {
-    console.log("error in add video to playlist",error)
+      setPlaylistData(data.playlist)
+      CallToast("success","Added to Playlist")
+    } catch (error) {
+      console.log("error in add video to playlist",error)
   }
 };
 const removeFromPlaylist = async (token, playlistId,videoId,setPlaylistData) => {
@@ -88,9 +92,9 @@ const removeFromPlaylist = async (token, playlistId,videoId,setPlaylistData) => 
           authorization: token,
         },
       }
-    );
-    console.log(data.playlist)
-    setPlaylistData(data.playlist)
+      );
+      setPlaylistData(data.playlist)
+      CallToast("success","Removed from Playlist")
   } catch (error) {
     console.log("error in delete video to playlist",error)
   }

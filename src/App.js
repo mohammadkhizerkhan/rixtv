@@ -20,17 +20,39 @@ import {
 } from "./pages";
 import { RequireAuth } from "./services";
 import { useTheme } from "./context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
-  const location=useLocation();
-  const {theme}=useTheme();
+  const location = useLocation();
+  const { theme } = useTheme();
   return (
-    <div className={`App ${theme==="dark"?"dark-mode":"light-mode"}`}>
+    <div className={`App ${theme === "dark" ? "dark-mode" : "light-mode"}`}>
       <Navbar />
+      <ToastContainer
+      className="toast"
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="flex-row">
         <Sidebar />
         <Routes>
           <Route element={<Home />}>
-            <Route path="/" element={<><Categories/><VideoListing/></>}/>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Categories />
+                  <VideoListing />
+                </>
+              }
+            />
             <Route
               index
               path="/home"
@@ -50,7 +72,10 @@ function App() {
               <Route path="/liked" element={<Liked />} />
               <Route path="/playlists" element={<Playlist />} />
               <Route path="/history" element={<History />} />
-              <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
+              <Route
+                path="/playlists/:playlistId"
+                element={<SinglePlaylist />}
+              />
             </Route>
           </Route>
         </Routes>

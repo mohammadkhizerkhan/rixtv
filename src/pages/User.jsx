@@ -1,7 +1,8 @@
 import React from "react";
 import { useAuth } from "../context";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from 'react-toastify';
+import { CallToast } from "../services";
 function User() {
   const {setToken, user, setUser } = useAuth();
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function User() {
     localStorage.removeItem("signup");
     setToken("");
     setUser();
+    CallToast("success","logged out succefully")
     navigate("/home");
   };
   return (
