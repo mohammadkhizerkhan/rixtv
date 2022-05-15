@@ -37,21 +37,21 @@ const AuthProvider=({children})=>{
         }
     }
     const signup=async (signUpData)=>{
-     
-            try {
-                const response=await signUpService(signUpData);
-                const {status,data:{encodedToken,createdUser}}=response;
-                console.log(encodedToken,createdUser)
-                console.log(response.data)
-                if(status===201){
-                    localStorage.setItem("login",JSON.stringify({token:encodedToken}))
-                    localStorage.setItem("user",JSON.stringify({user:createdUser}))
-                    setToken(encodedToken)
-                    setUser(createdUser)
+        
+        try {
+            const response=await signUpService(signUpData);
+            const {status,data:{encodedToken,createdUser}}=response;
+            if(status===201){
+                localStorage.setItem("login",JSON.stringify({token:encodedToken}))
+                localStorage.setItem("user",JSON.stringify({user:createdUser}))
+                setToken(encodedToken)
+                setUser(createdUser)
+                CallToast("success","Signed Up succesfully")
                 }
             } catch (err) {
                 console.log("error in login",err)
                 setError(err);
+                CallToast("error",err.message)
             }
     }
 

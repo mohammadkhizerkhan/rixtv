@@ -21,6 +21,7 @@ const createPlaylists = async (token, playlistName, setPlaylists) => {
     CallToast("success","Created a Playlist")
   } catch (error) {
     console.log("error in creater playlist", error);
+    CallToast("error",error.message)
   }
 };
 
@@ -34,6 +35,7 @@ const getPlaylists = async (token, setPlaylists) => {
     setPlaylists(data.playlists);
   } catch (error) {
     console.log("error in get playlist", error);
+    
   }
 };
 
@@ -48,6 +50,7 @@ const deletePlaylist = async (token, playlistId, setPlaylists) => {
     CallToast("success","Playlist Deleted")
   } catch (error) {
     console.log("error in delete playlist", error);
+    CallToast("error",error.message)
   }
 };
 
@@ -81,6 +84,7 @@ const addToPlaylist = async (token, video, playlistId,setPlaylistData) => {
       CallToast("success","Added to Playlist")
     } catch (error) {
       console.log("error in add video to playlist",error)
+      CallToast("error",error.message)
   }
 };
 const removeFromPlaylist = async (token, playlistId,videoId,setPlaylistData) => {
@@ -97,12 +101,11 @@ const removeFromPlaylist = async (token, playlistId,videoId,setPlaylistData) => 
       CallToast("success","Removed from Playlist")
   } catch (error) {
     console.log("error in delete video to playlist",error)
+    CallToast("error",error.message)
   }
 };
 
 const isVideoInPlaylist=(playlistData,video)=>{
-  console.log(playlistData)
-  console.log(playlistData?.videos?.some(item=>item._id===video._id))
   return playlistData?.videos?.some(item=>item._id===video._id)
 }
 

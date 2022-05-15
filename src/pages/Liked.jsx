@@ -21,7 +21,6 @@ function Liked() {
                     },
                   }
                 );
-                console.log([...data.likes])
                 setLike([...data.likes])
               } catch (error) {
                   console.log("error in get to LIKE",error)

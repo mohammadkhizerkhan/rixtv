@@ -59,6 +59,7 @@ function SingleVideo() {
         setVideo(data.video);
       } catch (error) {
         console.log("single video eroor", error);
+        CallToast("error",error.message)
       }
     })();
   }, [videoId]);

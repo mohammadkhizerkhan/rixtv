@@ -18,6 +18,7 @@ const addToWatchLater = async (token, video,setWatchLater) => {
     CallToast("success","Added to Watchlater")
   } catch (error) {
     console.log("error in add to watchlater",error)
+    CallToast("error",error.message)
   }
 };
 
@@ -35,6 +36,7 @@ const removeFromWatchLater = async (token, video,setWatchLater) => {
       CallToast("success","Removed from Watchlater")
   } catch (error) {
       console.log("error in remove from watchlater",error)
+      CallToast("error",error.message)
   }
 };
 

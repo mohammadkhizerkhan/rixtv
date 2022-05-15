@@ -19,6 +19,7 @@ const addToLike = async (token, video,setLike) => {
     CallToast("success","added to like")
   } catch (error) {
       console.log("error in add to LIKE",error)
+      CallToast("error",error.message)
   }
 };
 
@@ -37,6 +38,7 @@ const removeFromLike = async (token, video,setLike) => {
     CallToast("success","Removed from like")
   } catch (error) {
       console.log("error in remove from like",error)
+      CallToast("error",error.message)
   }
 
 };
