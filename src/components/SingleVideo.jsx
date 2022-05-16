@@ -26,6 +26,7 @@ import {
   removeFromLike,
   addToWatchLater,
   removeFromWatchLater,
+  CallToast,
 } from "../services";
 import PlaylistForm from "./PlaylistForm";
 
@@ -58,6 +59,7 @@ function SingleVideo() {
         setVideo(data.video);
       } catch (error) {
         console.log("single video eroor", error);
+        CallToast("error",error.message)
       }
     })();
   }, [videoId]);
@@ -135,7 +137,7 @@ function SingleVideo() {
             class="btn btn-s flex-row-center single-video-btn inactive-btn"
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
-              alert("link copied")
+              CallToast("success","Link copied to clipboard")
             }}
           >
             {theme === "dark" ? <LighLink /> : <DarkLink />}

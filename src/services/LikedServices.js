@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CallToast } from "./CallToast";
 
 
 const addToLike = async (token, video,setLike) => {
@@ -14,10 +15,11 @@ const addToLike = async (token, video,setLike) => {
         },
       }
     );
-    console.log([...data.likes])
     setLike([...data.likes])
+    CallToast("success","added to like")
   } catch (error) {
       console.log("error in add to LIKE",error)
+      CallToast("error",error.message)
   }
 };
 
@@ -32,10 +34,11 @@ const removeFromLike = async (token, video,setLike) => {
         },
       }
     );
-    console.log([...data.likes])
     setLike([...data.likes])
+    CallToast("success","Removed from like")
   } catch (error) {
       console.log("error in remove from like",error)
+      CallToast("error",error.message)
   }
 
 };

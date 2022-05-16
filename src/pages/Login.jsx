@@ -16,8 +16,7 @@ function Login() {
     setform({ ...form, [name]: value });
   };
 
-  // console.log(location);
-  console.log(location?.state?.from);
+
 
   const fillTestCredentials=(e)=>{
     setform({

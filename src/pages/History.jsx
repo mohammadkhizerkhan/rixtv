@@ -9,7 +9,6 @@ function History() {
   const { token } = useAuth();
   const navigate = useNavigate();
   const { history, setHistory } = useHistory();
-  console.log(history);
 
   // for future reference
   useEffect(() => {
@@ -23,6 +22,7 @@ function History() {
         setHistory([...data.history]);
       } catch (error) {
         console.log("error in getting in history", error);
+        
       }
     })();
   }, []);
