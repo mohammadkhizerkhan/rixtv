@@ -10,15 +10,6 @@ html {
   font-size: 62.5%;
 }
 
-:root {
-  /* --primary: #FFD300;
-  --text-color: #393e46;
-  --white-text-color: #dadada;
-  --background-color1: rgb(48, 48, 48);
-  --background-color2: rgb(30, 32, 36);
-  --background-color3: rgb(62, 63, 65);
-  --border-color: #3e3e41; */
-}
 
 .dark-mode{
   --primary: #FFD300;
