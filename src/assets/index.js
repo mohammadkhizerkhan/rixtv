@@ -4,3 +4,4 @@ export { DarkWatchlater,LightWatchlater,DarkChecked,LightChecked } from "./Watch
 export { DarkPlaylist, LightPlaylist } from "./Playlist"
 export { DarkHistory, LightHistory } from "./History"
 export {DarkLink,LighLink} from "./Link"
+export { LightMore,DarkMore } from "./More"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth, useHistory, useLike, useWatchLater } from "../context";
+import { DarkMore, LightMore } from "../assets";
+import { useAuth, useHistory, useLike, useWatchLater,useTheme } from "../context";
 import {
   addToLike,
   removeFromLike,
@@ -15,6 +16,7 @@ function VideoCard({ video }) {
   const [playlistForm, setPlaylistForm] = useState(false);
   const location = useLocation();
   const { token } = useAuth();
+  const { theme } = useTheme();
   const { history, setHistory } = useHistory();
   const { like, setLike } = useLike();
   const { watchLater, setWatchLater } = useWatchLater();
@@ -62,12 +64,9 @@ function VideoCard({ video }) {
               className="btn btn-icon btn-4"
               onClick={() => setMoreBtn(!moreBtn)}
             >
-              <svg width="3rem" height="3rem" viewBox="0 0 24 24">
-                <path
-                  fill="#d6d6d6"
-                  d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2s-2 .9-2 2s.9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2z"
-                ></path>
-              </svg>
+              {
+                theme==="dark"?<LightMore/>:<DarkMore/>
+              }
             </button>
             {moreBtn && (
               <div className="dropdown-label-btns">
