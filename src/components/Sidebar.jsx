@@ -8,8 +8,8 @@ function Sidebar() {
   const getActiveStyle = ({ isActive }) => {
     return {
       color: isActive
-        ? "#FFD300"
-        : `${theme === "dark" ? "#dadada" : "#393e46"}`,
+        ? "#000000"
+        :"#74747b",
       borderLeft: isActive ? "4px solid #FFD300" : "",
     };
   };
@@ -23,7 +23,7 @@ function Sidebar() {
             ) : (
               <DarkHome/>
             )}
-            <span className="margin-l-2">Home</span>
+            <span className="margin-l-2" >Home</span>
           </li>
         </NavLink>
         <NavLink to="watchlater" className="link" style={getActiveStyle}>
