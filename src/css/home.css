@@ -29,7 +29,7 @@ html {
   --background-color2: rgb(30, 32, 36);
   --background-color3: rgb(62, 63, 65);
   --fixed-background-color1: #191818;
-  --border-color: #3e3e41;
+  --border-color: #e6e6e7;
 }
 .light-mode{
   --primary: #FFD300;
@@ -47,6 +47,12 @@ html {
 
 .text-color{
   color: var(--text-color);
+}
+.bg1{
+  background-color: var(--background-color1);
+}
+.border-color{
+  border-color: var(--border-color);
 }
 
 .btn {
@@ -327,13 +333,24 @@ html {
   height: 1.5rem;
 }
 
+
 .playlist-card{
   width: 20rem;
-  background-color: var(--border-color);
   display: flex;
+  border: 2px solid;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+}
+
+.playlist-img-wrapper {
+	position: relative;
+	height: 9rem;
+}
+.playlist-img {
+	object-fit: cover;
+	width: 100%;
+	height: 9rem;
 }
 
 .toast{
