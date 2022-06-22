@@ -1,6 +1,7 @@
 # [RixTv](https://rixtv.netlify.app/)
 
-Kwiz me is An quiz app where you can play quiz.
+
+A video Library app which inspired by youtube. you can browse all gaming related videos.
 <hr/>
 
 ## Features
